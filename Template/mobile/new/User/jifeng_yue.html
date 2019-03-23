@@ -1,0 +1,107 @@
+<include file="Public/header"/>
+<body>
+<header>
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">{:tpCache('distribut.hot_jifeng_name')}转余额</div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+</header>
+<include file="Public/menu"/>
+<div id="tbh5v0">
+    <div class="Personal">
+        <div id="tbh5v0">
+            <div class="innercontent1">
+                <form method="post" id="edit_profile" onSubmit="return checkinfo()">
+                    <div class="name"><span>操作帐号</span>
+                        <input type="text"  value="{$user.mobile}" placeholder="*帐号" class="c-f-text" disabled >
+                    </div>
+                    <div class="name"><span>当前余额</span>
+                        <input type="text" value="{$user.user_money}" placeholder="*帐户余额" class="c-f-text" disabled >
+                    </div>
+
+                    <div class="name">
+                       <span>拥有{:tpCache('distribut.jifeng_name')}</span>
+                            <input  value="{$user.pay_points}"  placeholder="*帐户拥有{:tpCache('distribut.hot_jifeng_name')}" class="c-f-text" disabled style="width:15%; margin-right:15px"/>
+                            <i style="color:#f00">(当前1元=<?php echo tpCache('distribut.point_xianjin');?>{:tpCache('distribut.hot_jifeng_name')})</i>
+                    </div>
+                    
+                    <div class="name">
+                       <span>转换{:tpCache('distribut.jifeng_name')}</span>
+                            <input name="pay_points"   placeholder="*&nbsp;兑换必须为<?php echo tpCache('distribut.point_xianjin');?>的倍数" class="c-f-text"  style=" width:70%;border:#CCC solid 1px; font-size:14px; padding:5px 0px; text-indent:5px" onKeyUp="value=this.value.replace(/\D+/g,'')" required autocomplete="off"/>
+                    </div>
+                    
+                    
+                    <div class="field submit-btn">
+                    <if condition="$user['pay_points'] gt 0 && $user['pay_points'] gt tpCache('distribut.point_xianjin')">
+                        <input type="submit" value="确认转换" class="btn_big1" />
+                    <else/>
+                         <input type="submit" value="{:tpCache('distribut.hot_jifeng_name')}余额不足" class="btn_big1" style="background:#ccc;" disabled/>
+                    </if>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+function checkinfo(){
+	$(".btn_big1").attr('disabled',true);
+	var pay_points=$(" input[ name='pay_points' ] ").val();
+	if (<?php echo tpCache('distribut.point_xianjin');?>==0){
+		layer.open({content:'平台已关闭{:tpCache('distribut.hot_jifeng_name')}转换功能',time:2});	
+		$(" input[ name='pay_points' ] ").focus();
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+	if (pay_points=='' || pay_points<=0){
+		layer.open({content:'请输入你要转换的{:tpCache('distribut.hot_jifeng_name')}',time:2});	
+		$(" input[ name='pay_points' ] ").focus();
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+	if (<?php echo tpCache('distribut.point_xianjin');?>>pay_points){
+		layer.open({content:'{:tpCache('distribut.hot_jifeng_name')}最少<?php echo tpCache('distribut.point_xianjin');?>起转换',time:2});	
+		$(" input[ name='pay_points' ] ").focus();
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+	if (pay_points%<?php echo tpCache('distribut.point_xianjin');?>!=0){
+		layer.open({content:'{:tpCache('distribut.hot_jifeng_name')}转换必须为<?php echo tpCache('distribut.point_xianjin');?>的倍数',time:2});	
+		$(" input[ name='pay_points' ] ").focus();
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+	if (pay_points>{$user.pay_points}){
+		layer.open({content:'您最多可用{:tpCache('distribut.hot_jifeng_name')}{$user.pay_points}',time:2});	
+		$(" input[ name='pay_points' ] ").focus();
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+$.post('/index.php?s=/Mobile/User/jifeng_yue.html', {pay_points: pay_points},
+              function(res) {
+			        //console.log(res);
+                    if (res.code == 1) {
+                        layer.open({content: res.msg, time: 2});
+						location.reload();
+                    } else {
+                        layer.open({content: res.msg, time: 2});
+						$(" input[ name='pay_points' ] ").focus();
+						$(".btn_big1").attr('disabled',false);
+                    }
+               });
+	
+
+	return false;
+}
+
+</script>
+</body>
+</html>

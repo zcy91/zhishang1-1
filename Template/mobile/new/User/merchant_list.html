@@ -1,0 +1,119 @@
+<include file="Public/header"/>
+<body>
+ <header>
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">店铺信息</div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+</header>
+<include file="Public/menu"/>
+<div id="tbh5v0">
+<div class="liuyan" style="margin:0px; padding:0px">
+    <div class="liuyan_list">
+      <div id="list_0_0" style="font-size:14px; text-align:left; line-height:25px; padding:10px; background:#eee; margin:0px">
+       <span style="color:#f00; font-size:16px">请如实填写以下信息！</span><br>
+      &nbsp;&nbsp;1.请保持帐户{:tpCache('distribut.hot_jifeng_name')}充足<br/>
+      &nbsp;&nbsp;2.如不使用赠送或抵扣{:tpCache('distribut.jifeng_name')}，请设置为0</br>
+      &nbsp;&nbsp;3.联系信息需如实填写<br/>
+      &nbsp;&nbsp;4.店铺地址需详细填写，以便平台定位设置<br/>
+      &nbsp;&nbsp;5.上传产品与管理请使用电脑访问下方链接<br>
+      &nbsp;&nbsp;<span id="keydiv">http://www.yjy141319.com/Seller.html</span><span onclick="copyText()" style="padding:3px 10px; background:#36F; border-radius:5px; color:#FFF; font-size:12px; cursor:pointer; margin-left:15px">复制</span> 
+      </div>
+    </div>
+    <div class="liuyandom"> 
+      <section class="innercontent1">
+        <form action="" method="post" name="formMsg" onSubmit="return submitMsg()">
+          <div class="field_else">
+          <span>店铺名称：</span><input type="text" name="store_name" id="store_name" placeholder="&nbsp;例：***超市" style="width:70%" value="{$m_info.store_name}"/>
+          </div>
+          <div class="field_else">
+          <span>&nbsp;联&nbsp;系&nbsp;人：</span><input type="text" name="store_user_name" id="store_user_name" placeholder="&nbsp;例：李四" style="width:70%" value="{$m_info.store_user_name}"/>
+          </div>
+          <div class="field_else">
+          <span>联系电话：</span><input type="text" name="store_phone" id="store_phone" placeholder="&nbsp;电话或手机" style="width:70%" value="{$m_info.store_phone}"/>
+          </div>
+          <div class="field_else">
+          <span>店铺地址：</span><input type="text" name="store_address" id="store_address" placeholder="&nbsp;店铺地址" style="width:70%" value="{$m_info.store_address}"/>
+          </div>
+          <div class="field_else">
+             <textarea name="seo_description" id="seo_description" style="height:80px;width:92%" placeholder="店铺描述...">{$m_info.seo_description}</textarea>
+          </div>
+          
+          <div class="field_else">
+          <span>充值赠送：</span><input type="text" name="gift_jifeng" id="gift_jifeng" placeholder="&nbsp;例:兖100送1{:tpCache('distribut.jifeng_name')},直接填入1" value="{$m_info.gift_jifeng}" style="width:45%" onKeyUp="value=this.value.replace(/\D+/g,'')"/>%&nbsp;{:tpCache('distribut.jifeng_name')}
+          </div>
+          <div class="field_else">
+          <span>充值抵扣：</span><input type="text" name="arrive_jifeng" id="arrive_jifeng" placeholder="&nbsp;例:兖100送1{:tpCache('distribut.jifeng_name')},直接填入1" value="{$m_info.arrive_jifeng}" style="width:45%" onKeyUp="value=this.value.replace(/\D+/g,'')"/>%&nbsp;{:tpCache('distribut.jifeng_name')}
+          </div>  
+
+          <div class="field_else">
+          <span>&nbsp;验&nbsp;证&nbsp;码：</span><input  type="text" name="verify_code" id="verify_code" placeholder="验证码" style="width:25%"/>
+<img class="po-ab to0" id="verify_code_img" width="120" height="35" src="{:U('Home/User/verify',array('type'=>'merchant'))}"  onclick="verify(this)" />                
+          </div>          
+          <div style=" padding-bottom:10px;">
+            <input type="submit" value="提交保存" class="btn_big1"/>
+          </div>
+        </form>
+      </section>
+    </div>
+</div>
+
+<script>
+
+function copyText() {
+var Url2 = document.getElementById("keydiv").innerText;
+var oInput = document.createElement('input');
+oInput.value = Url2;
+document.body.appendChild(oInput);
+oInput.select();
+document.execCommand("Copy"); 
+oInput.className = 'oInput';
+oInput.style.display = 'none';
+layer.open({content:'复制成功',time:1});
+}
+
+function verify(){
+   $('#verify_code_img').attr('src','/index.php?m=Mobile&c=User&a=verify&type=merchant&r='+Math.random());
+}
+
+function submitMsg() {
+	if ($.trim($('#store_name').val()).length == 0) {
+		layer.open({content:'店铺名称不能为空',time:2});
+		$(" input[ name='store_name' ] ").focus();
+		return false
+	}
+	if ($.trim($('#store_user_name').val()).length == 0) {
+		layer.open({content:'联系人不能为空',time:2});
+		$(" input[ name='store_user_name' ] ").focus();
+		return false
+	}
+	if ($.trim($('#store_phone').val()).length == 0) {
+		layer.open({content:'联系电话不能为空',time:2});
+		$(" input[ name='store_phone' ] ").focus();
+		return false
+	}
+	if ($.trim($('#store_address').val()).length == 0) {
+		layer.open({content:'店铺地址不能为空',time:2});
+		$(" input[ name='store_address' ] ").focus();
+		return false
+	}
+	if ($.trim($('#verify_code').val()).length == 0) {
+		layer.open({content:'验证码不能为空',time:2});
+		$(" input[ name='验证码不能为空' ] ").focus();
+		return false
+	}
+	return true;
+}
+</script>
+<include file="Public/footer"/>
+</div>
+<include file="Public/footer_nav"/>
+</body>
+</html>

@@ -1,0 +1,53 @@
+2019-01-13 01:25:04支付宝支付：Array
+(
+    [payment_type] => 1
+    [trade_no] => 2019011322001486340541211592
+    [subject] => 网络科技充值
+    [buyer_email] => 155****6996
+    [gmt_create] => 2019-01-13 13:25:03
+    [notify_type] => trade_status_sync
+    [quantity] => 1
+    [out_trade_no] => recharge5tEE2i6Exk
+    [seller_id] => 2088331603679730
+    [notify_time] => 2019-01-13 13:25:04
+    [body] => 余额充值
+    [trade_status] => TRADE_SUCCESS
+    [is_total_fee_adjust] => N
+    [total_fee] => 0.10
+    [gmt_payment] => 2019-01-13 13:25:03
+    [seller_email] => 178022201@qq.com
+    [price] => 0.10
+    [buyer_id] => 2088112715686342
+    [notify_id] => 2019011300222132503086340532836376
+    [use_coupon] => N
+    [sign_type] => MD5
+    [sign] => 39c305c5dd13bfc52d6ed5b5dd1ca175
+)
+
+2019-01-13 01:25:04支付宝支付：Array
+(
+    [payment_type] => 1
+    [trade_no] => 2019011322001486340541211592
+    [subject] => 网络科技充值
+    [buyer_email] => 155****6996
+    [gmt_create] => 2019-01-13 13:25:03
+    [notify_type] => trade_status_sync
+    [quantity] => 1
+    [out_trade_no] => recharge5tEE2i6Exk
+    [seller_id] => 2088331603679730
+    [notify_time] => 2019-01-13 13:25:04
+    [body] => 余额充值
+    [trade_status] => TRADE_SUCCESS
+    [is_total_fee_adjust] => N
+    [total_fee] => 0.10
+    [gmt_payment] => 2019-01-13 13:25:03
+    [seller_email] => 178022201@qq.com
+    [price] => 0.10
+    [buyer_id] => 2088112715686342
+    [notify_id] => 2019011300222132503086340532836376
+    [use_coupon] => N
+    [sign_type] => MD5
+    [sign] => 39c305c5dd13bfc52d6ed5b5dd1ca175
+)
+
+2019-01-13 01:25:04金额不符:2019011322001486340541211592:0.10->recharge5tEE2i6Exk:0

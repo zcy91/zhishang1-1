@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>首页-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/index.css"/>
+    <link rel="stylesheet" href="__STATIC__/css/stores.css">
+    <link rel="stylesheet" href="__STATIC__/css/public.css">
+<script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__STATIC__/js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery.json.js"></script>
+<script type="text/javascript" src="__STATIC__/js/touchslider.dev.js"></script>
+<script type="text/javascript" src="__STATIC__/js/layer.js" ></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/mobile_common.js"></script>
+</head>
+<body style=" background:#F5F5F5">
+<header>
+    <div class="tab_nav">
+        <div class="header">
+            <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+            <div class="h-mid">位置定位</div>
+            <div class="h-right">
+                <aside class="top_bar">
+                    <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a
+                            href="javascript:;"></a></div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</header>
+<include file="Public/menu"/>
+	<style type="text/css">
+		body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<div id="allmap"></div>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hWvZskNqtgscOPrf4T4AhKhkVVuuRC7v"></script>
+<script type="text/javascript">
+        var myCity = new BMap.LocalCity();
+	     myCity.get(getStreetList);
+  function getStreetList(r) {
+		var lng_lat=r.center.lng+','+r.center.lat;
+		//console.log(lng_lat);
+		layer.open({content:'定位成功,正在为你跳转',time:2,
+		end:function(){
+             window.location.replace("Mobile/index/dingwei/lng_lat/"+lng_lat);
+        }
+		});	
+  }
+</script>
+
+
+<div style="height:100px; line-height:50px; clear:both;"></div>
+<include file="Public/footer"/>
+<include file="Public/footer_nav"/>
+
+</body>
+</html>

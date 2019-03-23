@@ -1,0 +1,18 @@
+[ 2019-03-21T08:55:42+08:00 ] 127.0.0.1 /index.php?s=/Seller/Admin/login_task
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+
+[ 2019-03-21T08:55:43+08:00 ] 127.0.0.1 /index.php?m=Seller&c=goods&a=ajaxGoodsList&p=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+

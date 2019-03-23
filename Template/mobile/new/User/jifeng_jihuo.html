@@ -1,0 +1,105 @@
+<include file="Public/header"/>
+<body>
+<header>
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">激活{:tpCache('distribut.cold_jifeng_name')}</div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+</header>
+<include file="Public/menu"/>
+<div id="tbh5v0">
+    <div class="Personal">
+        <div id="tbh5v0">
+            <div class="innercontent1">
+                <form method="post" id="edit_profile" >
+                    <div class="name"><span>当前帐号:</span>
+                        {$user.mobile}
+                    </div>
+                    <div class="name"><span>当前余额:</span>
+                        {$user.user_money}
+                    </div>
+                    <div class="name">
+                       <span>拥有{:tpCache('distribut.cold_jifeng_name')}:</span>
+                            {$user.cold_points}
+                    </div>
+                    <div class="name" style="color:#060">
+                       释放可交易额度:
+                           {$user.dai_points}&nbsp;<i style="color:#f00">(当前拥有)</i>
+                    </div>
+
+                   <div class="name dataid id2" style="color:#999; text-align:center; font-size:13px">
+                       {:tpCache('distribut.cold_jifeng_name')}可交易额度增加：<i style="color:#f00"><?php echo tpCache('distribut.point_yue_jifeng')*tpCache('distribut.point_shifang');?></i>赠送{:tpCache('distribut.equity_name')}：<i style="color:#f00"><?php echo tpCache('distribut.point_shifang_gq');?></i>股
+                   </div>
+                    <div class="name">
+                       激活交易额度费:<?php echo tpCache('distribut.point_yue_jifeng');?>元&nbsp;<i style="color:#f00">(注：本次交易将要扣除余额)</i>
+                    </div>
+                    <div class="field submit-btn">
+                    <if condition="$user['user_money'] egt tpCache('distribut.point_yue_jifeng') AND $user['dai_points'] egt tpCache('distribut.point_yue_jifeng')*tpCache('distribut.point_shifang')">
+                        <input type="submit" value="确认激活" class="btn_big1"  style="background: #060"/>
+                    <else/>
+                         <input type="submit" value="帐户余额或待释放{:tpCache('distribut.jifeng_name')}额度不足" class="btn_big1" style="background:#999;" disabled/>
+                    </if>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__STATIC__/js/layer/layer/layer.js" ></script>
+
+<script>
+
+$('.btn_big1').click(function () {
+    layer.confirm('一旦交易成功将不可撤销', {btn: ['立即激活','再想想'],title:"{:tpCache('distribut.jifeng_name')}激活"}, 
+      function(){checkinfo()},
+      function(){layer.msg('已为您取消{:tpCache('distribut.jifeng_name')}激活');});
+	  return false;
+})
+
+
+
+
+function checkinfo(){
+	$(".btn_big1").attr('disabled',true);
+	if (<?php echo tpCache('distribut.point_yue_jifeng');?>==0){
+		layer.msg('平台已关闭激活{:tpCache('distribut.cold_jifeng_name')}功能');	
+		return false;
+	}
+	
+	if ({$user.dai_points}<=0){
+		layer.msg('可用待释放{:tpCache('distribut.cold_jifeng_name')}额度不足');	
+		return false;
+	}
+	
+	if ({$user.user_money}<<?php echo tpCache('distribut.point_yue_jifeng');?>){
+		layer.msg('您的现金帐户余额不足');
+		return false;
+	}
+	
+
+$.post('', {ac:1},
+              function(res) {
+			        //console.log(res);
+                    if (res.code == 1) {
+                        layer.msg(res.msg);	
+						location.reload();
+                    } else {
+                        layer.msg(res.msg);	
+                    }
+					$(".btn_big1").attr('disabled',false);
+               });
+	
+
+	return false;
+}
+
+</script></body>
+</html>

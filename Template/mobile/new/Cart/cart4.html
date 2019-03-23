@@ -1,0 +1,94 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta name="Generator" content="tpshop" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>购物流程-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" href="__STATIC__/css/public.css">
+<link rel="stylesheet" href="__STATIC__/css/flow.css">
+<link rel="stylesheet" href="__STATIC__/css/style_jm.css">
+<script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+</head>
+<body style="background: rgb(235, 236, 237);position:relative;">
+<div class="tab_nav">
+    <div class="header">
+      <div class="h-left">
+        <a class="sb-back" href="javascript:history.back(-1)" title="返回"></a>
+      </div>
+      <div class="h-mid"> 提交订单      </div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+</header>
+<include file="Public/menu"/>
+<div class="screen-wrap fullscreen login">
+<form action="{:U('Mobile/Payment/getCode')}" method="post" name="cart4_form" id="cart4_form">
+<div class="content_success " >
+    <div class="con-ct   fo-con">
+        <h4 class="successtijiao">订单已经提交成功！</h4>
+      <ul class="ct-list">
+        <li>请您在<span>{$pay_date}</span>前完成支付，否则订单将自动取消！：</li>
+        <li >订单号：
+            <em>&nbsp;&nbsp;{$order['order_sn']}</em>
+        </li>
+        <li>总金额：
+            <em>￥{$order['total_amount']}元</em>
+        </li>
+        <li >{:tpCache('distribut.jifeng_name')}方式：
+            <em> 
+              <input type="radio"  value="1"  name="fangshi" class="c_checkbox_t fangshi" style="float:none; margin-top:5px; margin-top:5px" checked/>&nbsp;全额支付  
+              <if condition="$jifeng.integral_money neq 0">  
+              <input type="radio"  value="2"  name="fangshi" class="c_checkbox_t fangshi" style="float:none; margin-top:5px"}/>&nbsp;{:tpCache('distribut.jifeng_name')}抵扣 
+              </if>    
+            </em>     
+         </li>      
+                  
+        <li>支付方式：
+         <em >        
+                  <foreach name="paymentList" item="v"  key="k"> 
+                    <input type="radio"   value="pay_code={$v['code']}" class="c_checkbox_t" name="pay_radio" style="float:none; margin-top:5px"  <if condition="$v.code eq 'yue'">checked</if>/>
+                    <img src="/plugins/{$v['type']}/{$v['code']}/{$v['icon']}"  height="20" />
+                  </foreach>    
+           </em> 
+          </li>  
+            
+ <li class="name_html" style="text-align:center; color:#f00; font-size:16px">全额支付：{$order['total_amount']}元&nbsp;赠送<?php echo number_format($jifeng['gift_jifeng_money']*tpCache('distribut.point_rate'),2,'.','');?>{:tpCache('distribut.jifeng_name')}</li>
+             </ul>
+    </div>
+
+  <div class="pay-btn">
+	<input type="hidden" name="master_order_sn" value="{$master_order_sn}" />
+	<input type="hidden" name="order_id" value="{$order['order_id']}" />
+    <a href="javascript:void(0);" onClick="pay()" class="sub-btn btnRadius">立即支付</a>
+  </div>
+</div>
+</form>
+<script>
+ $(".fangshi").on("change",function(){
+     //获取input输入的值
+	var fangshi= $("input[name='fangshi']:checked").val();
+	if (fangshi == '1') {
+       $('.name_html').html("全额支付:{$order['total_amount']}元&nbsp;赠送<?php echo number_format($jifeng['gift_jifeng_money']*tpCache('distribut.point_rate'),2,'.','');?>{:tpCache('distribut.jifeng_name')}");
+    }else if(fangshi == '2') {
+       $('.name_html').html("{:tpCache('distribut.jifeng_name')}抵扣:{$order['total_amount']-$jifeng['integral_money']}元&nbsp;抵扣<?php echo number_format($jifeng['integral_money']*tpCache('distribut.point_rate'),2,'.','');?>{:tpCache('distribut.jifeng_name')}");
+    }
+});
+    function pay(){
+        $('#cart4_form').submit();
+        return;
+        //微信JS支付
+    }</script> 
+<include file="Public/footer"/>
+</div>
+<include file="Public/footer_nav"/>
+</body>
+</html>

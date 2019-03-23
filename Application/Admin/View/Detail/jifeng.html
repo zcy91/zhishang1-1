@@ -1,0 +1,76 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+  <include file="Public/breadcrumb"/>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-list"></i>&nbsp;平台帐户明细</h3>
+        </div>
+        <div class="panel-body">    
+		<div class="navbar navbar-default">
+
+            <div class="row navbar-form" style="float:left; width:auto;line-height:35px; color:#f00">
+              平台现存{:tpCache('distribut.jifeng_name')}：{$jifeng_sum}个&nbsp;&nbsp;
+              <span style="color: #090">平台余额：{$money_sum}元</span>&nbsp;&nbsp;
+              <span style="color: #00f">总购平台{:tpCache('distribut.jifeng_name')}：{$money_sum}个</span>
+            </div>
+				<div class="row navbar-form" style="line-height:35px; float:right;">
+                            <style>
+                              .desc{ margin-right:10px; padding:5px 8px; border-radius:5px; background:#ccc; font-size:12px; color:#FFF; cursor:pointer}
+							  .on{ background:#060; color:#fff}
+                            </style>
+                                快捷操作：
+                                <span onclick="location.href='{:U('jifeng')}'" class="desc <if condition="I('desc') eq ''"> on</if>">全部</span> 
+                                
+                                <volist name="leixing" id="list">
+				              	<span onclick="location.href='{:U('jifeng',array('desc'=>$list))}'" class="desc <if condition="I('desc') eq $list"> on</if>">{$list}</span> 
+                                </volist>   
+                                
+				            </div>	
+          </div>   
+                        
+          <div id="ajax_return"> 
+                 
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="sorting text-center">项目</th>
+                                <th class="sorting text-center">数量</th> 
+                                <th class="sorting text-center">时间</th>  
+                                <th class="sorting text-center">说明</th>                             
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="List" id="list">
+                                <tr>
+                                    <td class="text-left">{$list.desc|jifeng_replace}</td> 
+                                    <td class="text-left">{$list.money}</td> 
+                                    <td class="text-left">{$list.change_time|date="Y-m-d h:i:s",###}</td>  
+                                    <td class="text-left"><small style="color:#090">{$list.order_sn|jifeng_replace}</small></td>   
+                                                              
+                 
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                
+              <div class="row">
+              	    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row --> 
+  </section>
+  <!-- /.content --> 
+</div>
+<!-- /.content-wrapper -->
+</body>
+</html>

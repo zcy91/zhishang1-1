@@ -1,0 +1,3 @@
+<?php
+//000000000001a:2:{i:0;a:11:{s:8:"store_id";s:1:"2";s:11:"store_phone";s:11:"13777906118";s:10:"store_logo";s:0:"";s:10:"store_name";s:12:"万享商城";s:16:"store_desccredit";s:4:"0.00";s:19:"store_servicecredit";s:4:"0.00";s:20:"store_deliverycredit";s:4:"0.00";s:13:"province_name";N;s:9:"city_name";N;s:13:"district_name";N;s:11:"goods_array";s:1:"0";}i:1;a:11:{s:8:"store_id";s:2:"20";s:11:"store_phone";s:11:"18358033265";s:10:"store_logo";N;s:10:"store_name";s:12:"万达广场";s:16:"store_desccredit";s:4:"0.00";s:19:"store_servicecredit";s:4:"0.00";s:20:"store_deliverycredit";s:4:"0.00";s:13:"province_name";N;s:9:"city_name";N;s:13:"district_name";N;s:11:"goods_array";s:1:"0";}}
+?>

@@ -1,0 +1,97 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta name="Generator" content="ECSHOP v2.7.3" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>修改地址-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" href="__STATIC__/css/public.css">
+<link rel="stylesheet" href="__STATIC__/css/user.css">
+
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/layer.js" ></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/mobile_common.js"></script></head>
+<body>
+      <header>
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">查看债务债权</div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+      </header>
+       	 <include file="Public/menu"/>
+<div id="tbh5v0">					
+<div class="addressmone">
+  <form >
+	<ul>
+       <li>
+    	<span>平台名称</span>  
+        <input name="title" id="title" type="text" value="{$address.title}"  placeholder="平台名称" readonly/>
+		</li> 
+       <li>
+    	<span>借款金额</span>  
+        <input name="money" id="money" type="text" value="{$address.money}"  placeholder="该平台总借款金额" onkeyup="value=value.match(/\d+\.?\d{0,2}/,'')" readonly/>
+		</li> 
+        
+       <li>
+    	<span>平台法人</span>  
+        <input name="name" id="name" type="text" value="{$address.name}"  placeholder="平台法人" readonly/>
+		</li> 
+       <li>
+    	<span>平台网址</span>  
+        <input name="site" id="site" type="text" value="{$address.site}"  placeholder="平台网址" readonly/>
+		</li> 
+       <li>
+    	<span>平台帐号</span>  
+        <input name="account" id="account" type="text" value="{$address.account}"  placeholder="平台帐号"/>
+		</li> 
+       <li>
+    	<span>真实姓名</span>  
+        <input name="u_name" id="u_name" type="text" value="{$address.u_name}" placeholder="真实姓名" readonly/>
+		</li>  
+       <li>
+    	<span>身份证</span>  
+        <input name="u_sfz" id="u_sfz" type="text" value="{$address.u_sfz}" placeholder="身份证号码" readonly/>
+		</li>  
+           <li>
+    		 <span>平台地址</span> <input type="text"  name="address" id="address" placeholder="详细地址" maxlength="100" value="{$address.address}" style="font-size:12px"/>
+	       </li>
+           
+           <li>
+    		 <span>申请时间</span><input name="name" id="name" type="text"  placeholder="{$address.add_time|date='Y-m-d H:i',###}"/>
+	       </li>
+           <li>
+    		 <span>审核状态</span>
+<switch name="address.zt">
+<case value="0"><span style="color:#f00">审核中</span></case>
+<case value="1"><span style="color:#0C3">通过</span></case>
+<case value="2"><span style="color:#f00">失败</span></case>
+</switch>
+	       </li>
+<if condition='$address[zt] neq 0'>
+           <li>
+    		 <span>备注</span><input name="u_sfz" id="u_sfz" type="text" value="{$address.bz}" readonly style="font-size:12px"/>
+	       </li>
+           <li>
+    		 <span>审核时间</span><input name="name" id="name" type="text"  placeholder="{$address.end_time|date='Y-m-d H:i',###}"/>
+	       </li>
+           <li>
+    		 <span>发放额度</span><input name="u_sfz" id="u_sfz" type="text" value="{$address.amount}"  readonly/>
+	       </li>
+</if> 
+    	</ul>
+				 
+    </form>
+</div>        </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<foreach name="account_log" item="vo">
+<li class="<?php if((float)$vo["money"]<0 ){echo "list_remove";}else{echo "list_add";};?> J_add">
+    <div class="td_l">
+        <p>{$vo.types|function_types}: {$vo.money}</p>
+                        <if condition="$vo[desc] eq '快捷支付' && $vo[types] eq 1">
+                          <if condition="$vo[money] lt 0">
+                            <small style="color:#0C0">商家店铺:{$vo.order_id|about_xin='store','store_id='.###,'store_name','store_name'}<span style="color:#f00; padding-left:10px"  onClick="location='{:U("Store/fast_info",array('t_no'=>$vo['order_sn'],'store_id'=>$vo['order_id'],'u_id'=>$vo['user_id']))}'" >查看</span></small>
+                          <else/>
+                            <small style="color:#0C0">支付单号:{$vo.order_sn}{$vo.order_id}<span style="color:#f00; padding-left:10px"  onClick="location='{:U("Store/fast_info",array('t_no'=>$vo['order_sn'],'store_id'=>$vo['user_id'],'u_id'=>$vo['order_id']))}'">查看</span></small>
+                          </if>
+                        </if>
+    </div>
+    <div class="td_r">
+        <p class="il_money">{$vo.desc|jifeng_replace}</p>
+        <p class="time">{$vo.change_time|date='Y-m-d',###}</p>
+    </div>
+</li>
+</foreach>      

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>首页-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/index.css"/>
+<script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__STATIC__/js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery.json.js"></script>
+<script type="text/javascript" src="__STATIC__/js/touchslider.dev.js"></script>
+<script type="text/javascript" src="__STATIC__/js/layer.js" ></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/mobile_common.js"></script>
+</head>
+<body>
+<div id="page" class="showpage"><div>
+<header id="header"> 
+<a href="{:U('Cart/cart')}" class='user_btn' style="left:0px"></a>
+<div class="h-right" style="position:absolute; right:0px">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more" style="background-position:0px -35px;background-size:auto 280px; height:30px"><a href="javascript:;"></a> </div>
+      </aside>
+</div> 
+<span href="javascript:void(0)" class="logo">{$tpshop_config['shop_info_store_name']}</span> 
+</header>
+<include file="Public/menu"/>
+
+<script type="text/javascript" src="__STATIC__/js/jquery.SuperSlide.2.1.1.js"></script>
+  <!--公告start-->
+     <div class="notice">
+		<div class="m_cell_hd"><b>公告</b></div>
+		<div class="m_cell_hd"><i></i></div>
+		<div class="m_cell_ft m_cell_primary">
+		  <div class="notice_list">
+		    <div class="bd">
+			    <div class="tempWrap" style="overflow:hidden; position:relative; height:44px">
+                   <ul style="top: -44px; position: relative; padding: 0px; margin: 0px;">
+                  <tpshop sql="SELECT * FROM `__PREFIX__article` where cat_id =4 and is_open=1 ORDER BY article_id asc" key="k" item='v'>                   
+			    	 <li><a href="{:U('Article/index',array('article_id'=>$v["article_id"]))}" title="{$v[title]}">{$v[title]}<em>[查看详情]</em></a></li>
+                  </tpshop> 
+			       </ul>
+                </div>
+		    </div>
+			</div>
+		</div>
+	</div>
+  <!--公告end-->
+<div id="scrollimg" class="scrollimg">
+  <div class="bd">
+	 <ul>
+        <li>
+           <img src="__STATIC__/images/storebg.jpg" id="img" style="width:100%"/>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="index_dl">
+  <tr>
+    <td height="25%" align="left" valign="middle" style="text-indent:15px; font-size:1.1em"><span style="float:right; font-size:2.em; margin-right:15px">增长位数：<i style=" color:#FD0303; font-size:25px" class="ziti">{$jinchi["bili"]/100}</i>倍</span>热钱包奖金池：</td>
+  </tr>
+  <tr>
+    <td height="32.5%"  align="center" valign="middle" ><small style="font-size:3.2em; color:#FD0303;text-shadow:0 0 0.2em #474313,-0 -0 0.2em #474313;" class="ziti">{$jifeng_sum}</small><span style="font-size:.3em; color:#fff; padding-left:8px">({:tpCache('distribut.jifeng_name')})</span></td>
+  </tr>
+  <tr>
+    <td height="32.5%" align="center" valign="middle">下一目标：<small style="font-size:2em; color:#FD0303;text-shadow:0 0 0.2em #474313,-0 -0 0.2em #474313;" class="ziti">{$jinchi["jifeng"]}</small></td>
+  </tr>
+  <tr>
+    <td height="10%" valign="middle" style="text-indent:15px; font-size:0.6em"></td>
+  </tr>
+</table>
+        </li>
+	 	<adv pid ="2" limit="5" item="v">
+	    	<li><a href="{$v.ad_link}" <if condition="$v['target'] eq 1">target="_blank"</if> ><img src="{$v[ad_code]}" title="{$v[title]}" width="100%" style="{$v[style]};"/></a></li>
+     	</adv>                        
+     </ul>
+  </div>
+  <div class="hd">
+	<ul></ul>
+  </div>
+</div>
+<script type="text/javascript" src="__STATIC__/js/up/scroll.js"></script>
+<script type="text/javascript">
+var tab_height=$('#img').height();
+$('.index_dl').height(tab_height-10);
+	TouchSlide({ 
+		slideCell:"#scrollimg",
+		titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+		mainCell:".bd ul", 
+		effect:"leftLoop", 
+		autoPage:true,//自动分页
+		autoPlay:true, //自动播放
+		interTime:5000
+	});
+
+$(document).ready(function(){
+    jQuery(".notice_list").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"top",autoPlay:true});		
+	$('.list_lh li:even').addClass('lieven');
+	$(".list_lh").myScroll({
+		speed:40, //数值越大，速度越慢
+		rowHeight:35 //li的高度
+	});
+});
+</script>
+		<div class="list_lh">
+			<ul>
+             <foreach name="a_list" item="vo">
+				<li>
+					<a>{$vo.desc|trim|jifeng_replace}</a>{$vo.nickname|get_replace_xing|mb_substr=###,0,4,"utf-8"}<span>{$vo.change_time|date='H:i:s',###}</span><em>{$vo.money}</em>
+				</li>
+             </foreach>
+			</ul>
+		</div>
+<div id="fake-search" class="index_search">
+  <div class="index_search_mid">
+  <span><img src="__STATIC__/images/xin/icosousuo.png"></span>
+    <input  type="text" id="search_text" class="search_text" value="请输入您所搜索的商品或店铺"/>
+  </div>
+</div>
+<div class="entry-list clearfix">
+	<nav>
+		<ul>
+      <tpshop sql="SELECT * FROM `__PREFIX__wapnavigation` where is_show = 1 and lei=1 ORDER BY sort asc" key="k" item='v'>
+			<li class="nav-item">
+				<a href="{$v[url]}" style="width:<if condition='count($sql_result_v) gt 8'>20%<else />25%</if>" <if condition='$v.is_new eq 1'>target="_blank"</if>>
+					<img alt="{$v[name]}" src="{$v[img]}"  onerror="this.src='__PUBLIC__/images/bg-upload.png'"/>
+					<span>{$v[name]}</span>
+				</a>
+			</li>
+      </tpshop>        
+        </ul>
+	</nav>
+</div>
+
+<div class="floor_images">
+	<strong>
+            <adv  limit="4" item="v" pid="1">
+              <a href="{$v.ad_link}"  style="margin:0px; display:inline-block;" <if condition="$v['target'] eq 1">target="_blank"</if> >
+                <img src="{$v[ad_code]}" title="{$v[title]}" style="{$v[style]}" border="0"  onerror="this.src='__PUBLIC__/images/bg-upload.png'">
+              </a>
+           </adv>
+    </strong>
+</div>
+ 
+<section class="index_floor">
+  <div class="floor_body1">
+    <h2><em></em>精品推荐
+        <!--<div class="geng"> <a href="{:U('Goods/search',array('q'=>'精品'))}">更多</a> <span></span></div>-->
+    </h2>
+    <div id="scroll_best" class="scroll_hot">
+      <div class="bd">
+        <ul>
+        <assign name="fl" value="1"/>
+         <tpshop sql="select a.*,b.is_new as display from __PREFIX__wapnavigation as b,__PREFIX__goods as a where  b.lei=4 and b.is_show=1 and b.goods_id=a.goods_id  and  a.is_on_sale = 1 and a.goods_state = 1 order by b.sort asc limit 9" item="v" key="k">
+          <li>
+            <a href="{:U('Mobile/Goods/goodsInfo',array('id'=>$v[goods_id]))}" title="{$v.goods_name}" <if condition="$v['display'] eq 1">target="_blank"</if>>
+             <div class="index_pro"> 
+	              <div class="products_kuang"><img src="{$v.goods_id|goods_thum_images=400,400}"  onerror="this.src='__PUBLIC__/images/bg-upload.png'"></div>
+	              <div class="goods_name">{$v.goods_name|mb_substr=###,0,20,'utf-8'}</div>
+	              <div class="price">
+	                 <a href="javascript:AjaxAddCart({$v[goods_id]},1,0);" class="btns"><img src="__STATIC__/images/index_flow.png" ></a>
+	                 <span href="{:U('Mobile/Goods/goodsInfo',array('id'=>$v[goods_id]))}" class="price_pro">￥{$v.shop_price}元</span>
+	              </div>
+             </div>
+            </a>
+           </li>
+           <if condition="($fl++%3 eq 0) && ($fl lt 9)"></ul><ul></if>
+           </tpshop>
+           </ul>
+       </div>
+       <div class="hd">
+          <ul></ul>
+       </div>
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript">
+    TouchSlide({ 
+      slideCell:"#scroll_best",
+      titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      effect:"leftLoop", 
+      autoPage:true, //自动分页
+      //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+    });
+  </script>
+<section class="index_floor">
+  <div class="floor_body1" >
+    <h2>
+      <em></em>
+      新品上市
+        <!--<div class="geng"><a href="{:U('Goods/search',array('q'=>'新品'))}" >更多</a> <span></span></div>-->
+    </h2>
+    <div id="scroll_new" class="scroll_hot">
+      <div class="bd">
+        <ul>
+        <assign name="fl" value="1"/>
+         <tpshop sql="select a.*,b.is_new as display from __PREFIX__wapnavigation as b,__PREFIX__goods as a where  b.lei=5 and b.is_show=1 and b.goods_id=a.goods_id  and  a.is_on_sale = 1 and a.goods_state = 1 order by b.sort asc limit 9" item="v" key="k">
+          <li>
+            <a href="{:U('Mobile/Goods/goodsInfo',array('id'=>$v[goods_id]))}" title="{$v.goods_name}" <if condition="$v['display'] eq 1">target="_blank"</if>>
+             <div class="index_pro"> 
+	              <div class="products_kuang"><img src="{$v.goods_id|goods_thum_images=400,400}"  onerror="this.src='__PUBLIC__/images/bg-upload.png'"></div>
+	              <div class="goods_name">{$v.goods_name|mb_substr=###,0,20,'utf-8'}</div>
+	              <div class="price">
+	                 <a href="javascript:AjaxAddCart({$v[goods_id]},1,0);" class="btns"><img src="__STATIC__/images/index_flow.png"></a>
+	                 <span href="{:U('Mobile/Goods/goodsInfo',array('id'=>$v[goods_id]))}" class="price_pro">￥{$v.shop_price}元</span>
+	              </div>
+             </div>
+            </a>
+           </li>
+           <if condition="($fl++%3 eq 0) && ($fl lt 9)"></ul><ul></if>
+           </tpshop></ul>
+        </div>
+        <div class="hd">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript">
+    TouchSlide({ 
+      slideCell:"#scroll_new",
+      titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      effect:"leftLoop", 
+      autoPage:true, //自动分页
+      //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+    });
+  </script>
+<section class="index_floor">
+  <div class="floor_body1" >
+    <h2><em></em>热销商品
+        <!--<div class="geng"><a href="{:U('Goods/search',array('q'=>'热销'))}" >更多</a> <span></span></div>-->
+    </h2>
+    <div id="scroll_hot" class="scroll_hot">
+      <div class="bd">
+        <ul>
+        <assign name="fl" value="1"/>
+         <tpshop sql="select a.*,b.is_new as display from __PREFIX__wapnavigation as b,__PREFIX__goods as a where  b.lei=6 and b.is_show=1 and b.goods_id=a.goods_id  and  a.is_on_sale = 1 and a.goods_state = 1 order by b.sort asc limit 9" item="v" key="k">
+          <li>
+            <a href="{:U('Mobile/Goods/goodsInfo',array('id'=>$v[goods_id]))}" title="{$v.goods_name}" <if condition="$v['display'] eq 1">target="_blank"</if>>
+             <div class="index_pro"> 
+	              <div class="products_kuang"><img src="{$v.goods_id|goods_thum_images=400,400}"  onerror="this.src='__PUBLIC__/images/bg-upload.png'"></div>
+	              <div class="goods_name">{$v.goods_name|mb_substr=###,0,20,'utf-8'}</div>
+	              <div class="price">
+	                 <a href="javascript:AjaxAddCart({$v[goods_id]},1,0);" class="btns"><img src="__STATIC__/images/index_flow.png"></a>
+	                 <span href="{:U('Mobile/Goods/goodsInfo',array('id'=>$v[goods_id]))}" class="price_pro">￥{$v.shop_price}元</span>
+	              </div>
+              </div>
+            </a>
+           </li>
+           <if condition="($fl++%3 eq 0) && ($fl lt 9)"></ul><ul></if>
+           </tpshop></ul>
+          </div>
+        <div class="hd">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript">
+    TouchSlide({ 
+      slideCell:"#scroll_hot",
+      titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      effect:"leftLoop", 
+      autoPage:true, //自动分页
+      //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+    });
+  </script>
+<script type="text/javascript">
+	TouchSlide({ 
+		slideCell:"#index_banner",
+		titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+		mainCell:".bd ul", 
+		effect:"leftLoop", 
+		autoPage:true,//自动分页
+		autoPlay:true //自动播放
+	});
+</script>
+   
+<script type="text/javascript">
+var url = "index.php?m=Mobile&c=Index&a=ajaxGetMore";
+$(function(){
+	//$('#J_ItemList').more({'address': url});
+	getGoodsList();
+
+});
+var page = 1;
+function getGoodsList(){
+	$('.get_more').show();
+	$.ajax({
+		type : "get",
+		url:"/index.php?m=Mobile&c=Index&a=ajaxGetMore&p="+page,
+		dataType:'html',
+		success: function(data)
+		{
+			if(data){
+				$("#J_ItemList>ul").append(data);
+                var img_miss_src = "__STATIC__";
+                $(".products_kuang img").each(function (i,e) {
+                    var _this = $(e);
+                    if(!_this.attr("src")){
+                        _this.attr("src",img_miss_src+"/images/img-miss.png");
+                    }
+                });
+				console.log(data);
+				page++;
+				$('.get_more').hide();
+			}else{
+				$('.get_more').hide();
+				$('#getmore').remove();
+			}
+		}
+	}); 
+}
+</script>
+<div class="floor_body2" >
+  <h2>————&nbsp;猜你喜欢&nbsp;————</h2>
+  <div id="J_ItemList">
+    <ul class="product single_item info">
+    </ul>
+    <a href="javascript:;" class="get_more" style="text-align:center; display:block;"> 
+    <img src='__STATIC__/images/category/loader.gif' width="12" height="12"> </a> 
+  </div>
+  <div id="getmore" style="font-size:.24rem;text-align: center;color:#888;padding:.25rem .24rem .4rem;">
+  	<a href="javascript:void(0)" onClick="getGoodsList()">点击加载更多</a>
+  </div>
+</div>
+<include file="Public/footer"/>
+<script>function goTop(){$('html,body').animate({'scrollTop':0},600);}</script>
+<a href="javascript:goTop();" class="gotop"><img src="__STATIC__/images/topup.png"></a> 
+</div> 
+ <div id="search_hide" class="search_hide">
+ <h2> <span class="close"><img src="__STATIC__/images/close.png"></span>关键字搜索</h2>
+ <div id="mallSearch" class="search_mid">
+        <div id="search_tips"></div>
+          <ul class="search-type"><li  class="cur"  num="0">宝贝</li><li  num="1">店铺</li></ul>	
+          <div class="searchdotm"> 
+          <form class="set_ip"name="sourch_form" id="sourch_form" method="post" action="{:U('Goods/search')}">
+              <div class="mallSearch-input">
+                <div id="s-combobox-135">
+                    <input name="searchtype" id="searchtype" type="hidden" value="0">
+                    <input class="s-combobox-input" name="q" id="q"  placeholder="请输入关键词"  type="text" value="<?php echo I('q'); ?>"  style=" height:35px;line-height:35px;"/>
+                </div>                                                
+                <input type="button" value="" class="button"  onclick="if($.trim($('#q').val()) != '') $('#sourch_form').submit();" />
+              </div>
+          </form>
+         </div> 
+        </div>
+    	<section class="mix_recently_search"><h3>热门搜索</h3>
+	     <ul>
+            <foreach name="tpshop_config.hot_keywords" item="wd" key="k">
+               <li><a href="{:U('Goods/search',array('q'=>$wd))}" <if condition="$k eq 0">class="ht"</if>>{$wd}</a></li>
+            </foreach>         
+	     </ul>
+        </section>
+    </div>                                           
+</div>
+<include file="Public/footer_nav"/>
+<script type="text/javascript">
+$(function() {
+    $('#search_text').click(function(){
+        $(".showpage").children('div').hide();
+        $("#search_hide").css('position','fixed').css('top','0px').css('width','100%').css('z-index','999').show();
+    })
+    $('#get_search_box').click(function(){
+        $(".showpage").children('div').hide();
+        $("#search_hide").css('position','fixed').css('top','0px').css('width','100%').css('z-index','999').show();
+    })
+    $("#search_hide .close").click(function(){
+        $(".showpage").children('div').show();
+        $("#search_hide").hide();
+    })
+});
+</script>
+<script>
+$('.search-type li').click(function() {
+    $(this).addClass('cur').siblings().removeClass('cur');
+    $('#searchtype').val($(this).attr('num'));
+});
+
+//更新版本
+/*$.ajax({
+    type : "get",
+    url:"mobile/index/version",
+    dataType:'json',
+    success: function(data)
+    {
+        data[0].id=parseInt(data[0].id);
+        androidShare.jsMethod104(JSON.stringify(JSON.stringify(data[0])));
+
+    },
+    error:function () {
+        alert('更新失败');
+    }
+
+});*/
+var version={
+    "id":3,
+    "number":"v1.0",
+    "describe":"this is v1.0",
+    "src":"mobile/index/dl",
+    "create_at":"2019-03-08 05:03:20"
+}
+androidShare.jsMethod104(JSON.stringify(version));
+</script>
+<script>
+    window.onload=function () {
+        var img_miss_src = "__STATIC__";
+        $(".products_kuang img").each(function (i,e) {
+            var _this = $(e);
+            if(!_this.attr("src")){
+                _this.attr("src",img_miss_src+"/images/img-miss.png");
+            }
+        });
+    }
+</script>
+</body>
+</html>

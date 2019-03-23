@@ -1,0 +1,47 @@
+<include file="Public/header"/>
+<body>
+<header>
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">
+<switch name="lei">
+    <case value="0">快速导航</case>
+    <case value="1">图标导航</case>
+    <case value="2">RT物联合作商</case>
+    <case value="3">RT第三方服务</case>
+    <default />
+</switch>
+    </div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+</header>
+<include file="Public/menu"/>
+
+
+<div id="tbh5v0">
+<div class="user_com">
+
+<div class="Wallet" style="border:0px ">
+
+         <volist name="list" id="list">
+            <a href="{$list.url}"  <if condition='$list.is_new eq 1'>target="_blank"</if>><em class="Icon" style="width:25px; height:25px; margin:0px; padding:0px; overflow:hidden; margin-top:10px;"><img width="25" height="25" src="{$list.img}" onerror="this.src='__STATIC__/images/sanjiao1.png'" style="position:absolute;"/></em>
+               <dl class="b" style="width:100%; padding:0px; margin:0px"><dt style="text-indent:30px">{$list.name}</dt><dd style="float:right; margin-right:35px">&nbsp;</dd></dl>
+            </a>
+        </volist>
+	
+</div>
+
+</div>
+
+</div>
+
+
+	
+</body>
+</html>

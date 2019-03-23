@@ -1,0 +1,219 @@
+<include file="Public/header"/>
+<link href="/Public/css/jquery.datetimepicker.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/Public/js/jquery.datetimepicker.js"></script>
+<link href="__STATIC__/pc/qt_style.css" rel="stylesheet" type="text/css" />
+<link href="__STATIC__/pc/common.min.css" rel="stylesheet" type="text/css" />
+<body>
+<header>
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">等待审核</div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+</header>
+<include file="Public/menu"/>
+<style>
+.store-joinin-apply {
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#D8FFFFFF', endColorstr='#D8FFFFFF');
+    background: #fff;
+    opacity: 0.85;
+    width: 95%;
+    padding: 20px 0px;
+    margin: 20px auto;
+}
+.main {
+    width: 100%;
+    border-radius: 4px;
+}
+.main .explain {
+    font: 16px/32px "microsoft yahei";
+    color: #777;
+    margin: 10px 0 100px 0;
+}
+
+.main .bottom, .apply-agreement .bottom, .joinin-pay .bottom {
+    text-align: center;
+    height: 30px;
+    margin: 30px 0 10px 0;
+}
+/*操作温馨提示*/
+.operat-tips{ color: #666; background: rgba(93,178,255,.1); border: 1px solid #BCE8F1; padding: 20px;margin-top: 20px;}
+.operat-tips h4{font-size: 14px; font-weight: normal; line-height: 20px; height: 20px;}
+.operat-tips h4 i{background-position: -384px -224px;height: 26px;margin-right: 10px}
+.operat-tips ul.operat-panel{ padding: 10px 0px 0px 20px;}
+.operat-tips ul.operat-panel li { line-height: 20px; margin-bottom: 2px; list-style-type: disc; padding-left: 3px; list-style-position: outside; font-size: 8px;}
+.operat-tips ul.operat-panel li span{ font-size: 12px; color: #999;}
+
+ul, ol, li {
+    list-style-image: none;
+    list-style-type: none;
+}
+/*成功提示*/
+.operat-tips.success h4,.operat-tips.lose h4{ font-weight:600; height:30px; font-size:15px; line-height:30px;}
+.operat-tips.success h4 i,.operat-tips.lose h4 i{background: url(../images/apply/joinin_pic.png) no-repeat -216px -150px;width: 30px;height: 30px;}
+.operat-tips.lose h4 i{ background-position:-135px -150px;}
+.operat-tips p,.operat-tips .bottom{ text-align:left; padding: 10px 0px 0px 20px;}
+.operat-tips p.handle{ margin-top:20px;}
+.operat-tips p.handle span.line{ color:#999; margin:0px 20px}
+.bottom {text-align: left;padding: 10px 0px 0px 20px;margin-top: 20px;}
+.bottom .btn {margin-right: 5px;}
+a.btn-primary, .btn-primary {background-color: #df3434;color: #fff; border-color: #df3434;}
+.btn {
+    font-family: "Microsoft Yahei", "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif;
+    display: inline-block;
+    padding: 0 10px;
+    height: 32px;
+    line-height: 30px;
+    color: #666;
+    min-width: 80px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    box-sizing: border-box;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: 0;
+    text-decoration: none;
+    background-image: none;
+    background-color: #f6f6f6;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+.btn-link {color: #0579c6;}
+.operat-tips a:hover{color: #E31939;text-decoration: none;cursor: pointer;}
+.ad-box, .ad-box a {width:100%;margin: 40px auto 10px;}
+.ad-box .ad-img {max-width: 100%;max-height: 100%;}
+a.btn-primary:hover, .btn-primary:hover {color: #fff;background-color: #ee3f36;border-color: #ee3f36;}
+</style>
+</head>
+<body>
+<style>
+	.steps>li{
+		width: 1.1rem;
+		margin-right: 0;
+		height: 80px;
+		background: none;
+	}
+	.steps>li:first-of-type{
+		left: 0;
+	}
+	.steps>li>b{
+		display: inline-block;
+		float: left;
+		width: 0.5rem;
+		height: 0.5rem;
+		line-height: 0.5rem;
+		border-radius: 50%;
+		background: rgb(204,204,204);
+		transform: scale(1.1);
+	}
+	.steps>li>span{
+		width: 0.6rem;
+		display: inline-block;
+		float: left;
+		background: rgb(204,204,204);
+		height: 0.08rem;
+		position: relative;
+		top: 17%;
+		left: 0px;
+		/*transform: scale(1.1);*/
+	}
+	.cur{
+		background: none!important;
+	}
+	.ok{
+		background: none!important;
+	}
+	.cur b{
+		background: rgb(204,204,204)!important;
+	}
+	.ok b{
+		background: rgb(204,0,1)!important;
+	}
+	.ok em{
+		color: rgb(204,0,1)!important;
+	}
+</style>
+<script>
+	document.documentElement.style.fontSize=(document.documentElement.offsetWidth/6.5)+"px";
+</script>
+<div class="gome-layout-area pb50 clearfix">
+    	<ul class="steps clearfix">
+        	<li class="first prev ok"><b>1</b><span class="going"></span><em class="f">入驻须知</em></li>
+        	<li class="prev ok"><b>2</b><span class="going"></span><em class="f">公司信息</em></li>
+        	<li class="prev ok"><b>3</b><span class="going"></span><em class="f">店铺信息</em></li>
+        	<li class="prev ok"><b>4</b><span class="going"></span><em class="f">资质上传</em></li>
+        	<li class="cur ok"><b>5</b><em class="f">等待审核</em></li>
+        </ul>
+<div class="store-joinin-apply">
+  <div class="main">
+    <div class="main">
+		<div class="explain"><i></i>
+		<if condition="$apply[apply_state] eq 0">
+		<p style="text-align:center;"><br><br>入驻申请已经提交，请等待管理员审核</p>
+			<if condition="$apply[paying_amount] gt 0">
+			<span>请缴纳入驻费：{$apply.paying_amount} 元</span>	
+			<form name="" method="post" enctype="multipart/form-data">
+         		<input type="text" name="paying_amount_cert" id="paying_amount_cert" class="input260" value="{$apply.paying_amount_cert}">
+                <input type="button" class="gome-btn-red" onClick="GetUploadify(1,'paying_amount_cert','seller','')"  value="上传付款凭证"/>
+               	<input type="submit" class="gome-btn-gray"  value="提交"/>
+               	<notempty name='apply.paying_amount_cert'>
+                    <div style="width: 640px;height: 320px;">
+                    	<img height="320" src="{$apply.paying_amount_cert}" nc_type="store_label">
+     				</div>
+         		</notempty>
+         	</form>
+			</if>
+		<elseif condition="$apply[apply_state] eq 1" />
+			<div class="operat-tips success">
+				<h4>
+					<i></i>恭喜您的申请审核通过，店铺创建成功！
+				</h4>
+				<ul class="operat-panel">
+					<li>
+						<span>现在您可以去经营您的店铺了，赶紧去发布商品吧；</span>
+					</li>
+					<li>
+						<span>
+							您也可以登录
+							<a class="btn-link" href="{:U('Seller/Admin/login')}">商家入驻中心</a>
+							及时查看审核状态；
+						</span>
+					</li>
+					<li>
+						<span> 如有疑问请联系网站客服。 </span>
+					</li>
+				</ul>
+		
+				<div class="bottom">
+					<a class="btn btn-primary" href="{:U('Seller/Admin/login')}">进入卖家中心 </a>
+					<a class="btn" href="{:U('Index/index')}">返回首页 </a>
+				</div>
+				<p class="handle">
+					您还可以：
+					<a class="btn-link" href="{:U('Seller/Admin/login')}">进入卖家中心，完善店铺信息</a>
+				</p>
+			</div>
+		<else/>
+			<p style="color:red; text-align:center;">抱歉，您的申请没有通过<br/>提示：{$apply.review_msg}</p>
+		</if>
+		</div>
+		<div class="bottom"></div>
+	</div>
+  </div>
+</div>
+</div>
+<include file="Public/min-footer" /> 
+</body>
+</html>

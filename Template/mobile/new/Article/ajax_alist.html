@@ -1,0 +1,11 @@
+            	<foreach name="a_list" item="vo">
+	                <li class="list_add" onClick="location='{:U('Article/alist',array('article_id'=>$vo['article_id']))}'">
+	                    <div class="td_l">
+	                        <p>{$vo.title}</p>
+	                    </div>
+	                    <div class="td_r">
+	                        <p class="il_money">{$vo.title}</p>
+	                        <p class="time">{$vo.add_time|date='Y-m-d',###}</p>
+	                    </div>
+	                </li>
+                </foreach>

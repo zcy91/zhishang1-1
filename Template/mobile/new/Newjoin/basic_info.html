@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+		<meta name="format-detection" content="telephone=no,email=no,adress=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<title>身份信息</title>
+		<link rel="stylesheet" href="__STATIC__/zs/css/base.css">
+		<link rel="stylesheet" type="text/css" href="__STATIC__/zs/css/shop_enter_comm.css" />
+		<link rel="stylesheet" href="__STATIC__/css/public.css">
+		<style>
+			.map_container{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 999;
+				overflow: hidden;
+				background: transparent;
+				/* visibility: hidden; */
+				display: none;
+			}
+			.map_container > #allmap{
+				height: 100%;
+				/* margin-top: 35%; */
+			}
+			.lnglat_input{
+				padding-right: 14%;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="head" style="width: 100%;height: 45px;border-bottom: 1px solid #ccc;">
+			<div class="tab_nav">
+				<div class="header">
+					<div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+					<div class="h-mid">公司信息</div>
+					<div class="h-right">
+						<!--<aside class="top_bar">-->
+							<!--<div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>-->
+						<!--</aside>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="join_step">
+				<div class="join_step_content">
+					<div class="join_step_content_ico">
+						<i class="j_i_n j_i_on b_radius_50">1</i>
+						<i class="j_i_h j_i_on"></i>
+						<i class="j_i_n j_i_on b_radius_50">2</i>
+						<i class="j_i_h j_i_off"></i>
+						<i class="j_i_n j_i_off b_radius_50">3</i>
+					</div>
+					<div class="join_step_content_instr clear">
+						<p class="p_on">入驻须知</p>
+						<p class="p_on">店铺信息</p>
+						<p class="p_off">等待审核</p>
+					</div>
+				</div>
+			</div>
+			<div class="other_content">
+				<div class="user_tip">
+					<h3>填写个人店铺信息</h3>
+				</div>
+				<div class="input_content">
+					<p class="input_c_title">店铺信息</p>
+					<ul class="input_c_ul">
+						<li class="clear">
+							<label for="" class="user_input_title"><span>*</span>店铺名称：</label>
+							<div>
+								<input type="text" class="w_appearance user_input_text" field-name="store_name" require="require"
+								 require-empty-tip="店铺名称未填写">
+							</div>
+						</li>
+						<li class="clear">
+							<label for="" class="user_input_title"><span>*</span>店铺主营大类：</label>
+							<div class="user_input_select" value="" select-next="no" field-name="sc_id" require="require" require-empty-tip="店铺主营大类未选择">
+								<div class="user_input_select_result clear">
+									<p>请选择</p>
+									<i>&nbsp;</i>
+								</div>
+								<div class="user_input_select_option_content">
+									<ul class="user_input_select_option_content_ul">
+									
+										<foreach name="store_class" item="vo" key="k">
+											<li value="{$k}"><p>{$vo.sc_name}</p></li>
+										</foreach>
+
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="clear">
+							<label for="" class="user_input_title"><span>*</span>店铺性质：</label>
+							<div class="user_input_select" value="" select-next="no" field-name="store_type" require="require"
+							 require-empty-tip="店铺性质未选择">
+								<div class="user_input_select_result clear">
+									<p>请选择</p>
+									<i>&nbsp;</i>
+								</div>
+								<div class="user_input_select_option_content">
+									<ul class="user_input_select_option_content_ul">
+										<li value="0">
+											<p>请选择</p>
+										</li>
+										<li value="1">
+											<p>旗舰店</p>
+										</li>
+										<li value="2">
+											<p>专卖店</p>
+										</li>
+										<li value="3">
+											<p>专营店</p>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="clear">
+							<label for="" class="user_input_title"><span>*</span>负责人姓名：</label>
+							<div>
+								<input type="text" class="w_appearance user_input_text" field-name="store_person_name" require="require"
+								 require-empty-tip="负责人姓名未填写">
+							</div>
+						</li>
+						<li class="clear">
+							<label for="" class="user_input_title"><span>*</span>手机号码：</label>
+							<div>
+								<input type="text" class="w_appearance user_input_text" field-name="store_person_mobile" require="require"
+								 require-empty-tip="手机号码未填写">
+							</div>
+						</li>
+						<li class="clear">
+							<label for="" class="user_input_title"><span>*</span>详细地址：</label>
+							<div>
+								<input type="text" class="w_appearance user_input_text" field-name="store_address" require="require" id="address"
+								 require-empty-tip="详细地址未填写">
+							</div>
+						</li>
+						<li><div id="BDMap" style="width:100%;border:1px solid gray;text-align: center;height: 300px;margin-top: .25rem"></div></li>
+						<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto;display:none;margin-top: 20px;">onconfirm<br>index = 0<br>myValue = 义乌市</div>
+						<li class="clear">
+							<label for="" class="user_input_title"><span>*</span>经纬度拾取：</label>
+							<div>
+								<input type="text" class="w_appearance user_input_text lnglat_input" field-name="store_latlng" readonly="readonly" id="val"
+									   require="require" require-empty-tip="经纬度未选取">
+								<i id="user_input_latlng_ico" class="user_input_latlng_ico"></i>
+								<span style="display: none">经度<input id="longitude" name="longitude">
+									纬度<input id="latitude" name="latitude"></span>
+							</div>
+						</li>
+						<li class="clear">
+							<label for="" class="user_input_title">QQ号码：</label>
+							<div>
+								<input type="text" class="w_appearance user_input_text" field-name="store_person_qq">
+							</div>
+						</li>
+						<li class="clear">
+							<label for="" class="user_input_title">电子邮箱：</label>
+							<div>
+								<input type="text" class="w_appearance user_input_text" field-name="store_person_email">
+							</div>
+						</li>
+
+					</ul>
+				</div>
+
+
+				<!--<div class="input_content">
+					<p class="input_c_title">结算银行账号</p>
+					<ul class="input_c_ul">
+						<li class="clear">
+							<label for="" class="user_input_title">银行开户名：</label>
+							<div>
+								<input type="text" class="w_appearance user_input_text" field-name="bank_account_name">
+							</div>
+						</li>
+						<li class="clear">
+							<label for="" class="user_input_title">银行账号：</label>
+							<div>
+								<input type="text" class="w_appearance user_input_text" field-name="bank_account_number">
+							</div>
+						</li>
+						<li class="clear">
+							<label for="" class="user_input_title">开户银行名称：</label>
+							<div>
+								<input type="text" class="w_appearance user_input_text" field-name="bank_branch_name">
+							</div>
+						</li>
+						<li class="clear">
+							<label for="" class="user_input_title">开户所在地：</label>
+							<div class="user_input_select" id="bank_province" value="" select-next="bank_city" select-next-callback="get_city"
+							 field-name="bank_province">
+								<div class="user_input_select_result clear">
+									<p>请选择</p>
+									<i>&nbsp;</i>
+								</div>
+								<div class="user_input_select_option_content">
+									<ul class="user_input_select_option_content_ul">
+										<li value="">
+											<p>请选择</p>
+										</li>
+										<li value="1">
+											<p>请选择</p>
+										</li>
+										&lt;!&ndash; <volist name="province" id="vo">
+										<li value="{$vo.id}">{$vo.name}</li>
+										</volist> &ndash;&gt;
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="clear">
+							<label for="" class="user_input_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+							<div class="user_input_select" id="bank_city" value="" field-name="bank_city">
+								<div class="user_input_select_result clear">
+									<p>请选择</p>
+									<i>&nbsp;</i>
+								</div>
+								<div class="user_input_select_option_content">
+									<ul class="user_input_select_option_content_ul">
+										&lt;!&ndash; <li value="0">
+											<p>金华</p>
+										</li>
+										<li value="1">
+											<p>衢州</p>
+										</li>
+										<li value="2">
+											<p>杭州</p>
+										</li> &ndash;&gt;
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>-->
+
+				<div class="input_next_step">
+					<a href="javascript:;" class="input_next_step_finish" next-type="finish" next-page="/index.php?s=/Mobile/Newjoin/apply_info.html">确认提交</a>
+				</div>
+			</div>
+		</div>
+		<div class="map_container">
+			<div id="allmap">
+
+			</div>
+		</div>
+		<input type="hidden" id="ajax_submit" interface="/index.php?s=/Mobile/Newjoin/submission" submit-type="post">
+		<script type="text/javascript" src="__STATIC__/zs/js/zepto/zepto.js"></script>
+		<script type="text/javascript" src="__STATIC__/zs/js/zepto/event.js"></script>
+		<script type="text/javascript" src="__STATIC__/zs/js/zepto/selector.js"></script>
+		<script type="text/javascript" src="__STATIC__/zs/js/zepto/touch.js"></script>
+		<script type="text/javascript" src="__STATIC__/zs/js/zepto/ajax.js"></script>
+		<script type="text/javascript" src="__STATIC__/zs/js/shop_enter_comm.js"></script>
+		<script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=hWvZskNqtgscOPrf4T4AhKhkVVuuRC7v"></script>
+		<script type="text/javascript">
+            // 百度地图API功能
+            // 绘制地图
+            var map = new BMap.Map("BDMap",{enableMapClick: false});
+            // 定位并显示当前地址
+            theLocation();
+            map.enableScrollWheelZoom(); //启用滚轮放大缩小，默认禁用
+            map.enableContinuousZoom(); //启用地图惯性拖拽，默认禁用
+            var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+            var top_left_navigation = new BMap.NavigationControl({type:BMAP_NAVIGATION_CONTROL_SMALL}); //左上角，添加默认缩放平移控件
+            map.addControl(top_left_control);
+            map.addControl(top_left_navigation);
+            var ac = new BMap.Autocomplete( //建立一个自动完成的对象
+                {"input" : "address"
+                    ,"location" : map
+                });
+            var c=document.getElementById("address").value;
+            ac.setInputValue(c);
+            ac.addEventListener("onhighlight", function(e) { //鼠标放在下拉列表上的事件
+                var str = "";
+                var _value = e.fromitem.value;
+                var value = "";
+                if (e.fromitem.index > -1) {
+                    value = _value.province + _value.city + _value.district + _value.street + _value.business;
+                }
+                str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+                value = "";
+                if (e.toitem.index > -1) {
+                    _value = e.toitem.value;
+                    value = _value.province + _value.city + _value.district + _value.street + _value.business;
+                }
+                str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+                G("searchResultPanel").innerHTML = str;
+            });
+            var myValue;
+            ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
+                var _value = e.item.value;
+                myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
+                G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+                setPlace();
+            });
+            function G(id) {
+                return document.getElementById(id);
+            }
+            function setPlace(){
+                map.clearOverlays(); //清除地图上所有覆盖物
+                function myFun(){
+                    var pp = local.getResults().getPoi(0).point; //获取第一个智能搜索的结果
+                    $("#longitude").val(pp.lng);//设置经纬度
+                    $("#latitude").val(pp.lat);
+                    var val = pp.lng +','+ pp.lat;
+                    $("#val").val(val);
+                    map.centerAndZoom(pp, 18);
+                    map.addOverlay(new BMap.Marker(pp)); //添加标注
+                }
+                var local = new BMap.LocalSearch(map, { //智能搜索
+                    onSearchComplete: myFun
+                });
+                local.search(myValue);
+            }
+            // 用经纬度设置地图中心点
+            function theLocation(){
+                if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
+                    map.clearOverlays();
+                    var new_point = new BMap.Point(document.getElementById("longitude").value,document.getElementById("latitude").value);
+                    var marker = new BMap.Marker(new_point); // 创建标注
+                    map.centerAndZoom(new_point, 15);
+                    map.addOverlay(marker); // 将标注添加到地图中
+                    map.panTo(new_point);
+                }else{
+                    map.centerAndZoom("义乌", 15);
+                }
+            }
+            var geoc = new BMap.Geocoder();
+            map.addEventListener("click", function(e){
+//通过点击百度地图，可以获取到对应的point, 由point的lng、lat属性就可以获取对应的经度纬度
+                var pt = e.point;
+                geoc.getLocation(pt, function(rs){
+//addressComponents对象可以获取到详细的地址信息
+                    var addComp = rs.addressComponents;
+                    var site = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+//将对应的HTML元素设置值
+                    $("#address").val(site);
+                    $("#longitude").val(pt.lng);
+                    $("#latitude").val(pt.lat);
+                    var val = pt.lng +','+ pt.lat;
+                    $("#val").val(val);
+                });
+            });
+
+
+		</script>
+		<script type="text/javascript">
+			$(function() {
+				initNavigation();
+			});
+			var map;
+			//处理经纬度
+			function initNavigation() {
+				var map_container = $(".map_container");
+				var t = $(".lnglat_input");
+				t.on("tap", function(e) {
+					map_container.css("display", "block");
+					delete window.map;
+					map = new BMap.Map("allmap");
+					var point = new BMap.Point(120.100733, 29.294005);
+					map.centerAndZoom(point, 11);
+					map.addEventListener("touchstart", function(e) {
+						if (e.touches.length > 1) {
+							return;
+						}
+						map.start_touch_time = new Date().getTime();
+						map.start_touch_x = e.touches[0].clientX;
+						map.start_touch_y = e.touches[0].clientY;
+						map.is_tap = true;
+					});
+					map.addEventListener("touchmove", function(e) {
+						if (e.touches.length > 1) {
+							return;
+						}
+						if (Math.abs(e.touches[0].clientX - map.start_touch_x) > 10 || Math.abs(e.touches[0].clientY - map.start_touch_y) >
+							10) {
+							map.is_tap = false;
+						}
+					});
+					map.addEventListener("touchend", function(e) {
+						if (e.touches.length > 1 || !map.is_tap || (new Date().getTime() - map.start_touch_time > 200)) {
+							return;
+						}
+						if (confirm("确定选取该经纬度吗？")) {
+							t.val(e.point.lng + ", " + e.point.lat);
+							map_container.css("display", "none");
+						}
+					});
+					//手机端浏览时顶部会有一点缝隙 所以再减去3px
+					map_container.css("top", $(window).scrollTop() - 3 + "px");
+				});
+				map_container.css("display", "none");
+			}
+		</script>
+		<script type="text/javascript">
+			String.prototype.replaceAll = function(s1, s2) {
+				return this.replace(new RegExp(s1, "gm"), s2);
+			}
+			/**
+			 * 获取城市
+			 * @param t  省份select对象
+			 */
+			function get_city(t) {
+				var parent_id = $(t).val();
+				if (!parent_id > 0) {
+					return;
+				}
+				var url = '/index.php?m=Home&c=Api&a=getRegion&level=2&parent_id=' + parent_id;
+				$.ajax({
+					type: "GET",
+					url: url,
+					error: function(request) {
+						alert("服务器繁忙, 请联系管理员!");
+						return;
+					},
+					success: function(v) {
+						v = v.replaceAll("option", "li");
+						v = '<li value="0">选择城市</li>' + v;
+						var bank_city_ul = $("#bank_city").find(".user_input_select_option_content_ul");
+						bank_city_ul.empty();
+						bank_city_ul.append($(v));
+						bank_city_ul.find("li").on("tap", function(e) {
+							option_click(e, this);
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

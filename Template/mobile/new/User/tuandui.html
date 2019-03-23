@@ -1,0 +1,80 @@
+<include file="Public/header"/>
+<body>
+<header>
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">我的团队</div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+</header>
+<include file="Public/menu"/>
+<div id="tbh5v0">			
+<div class="user_tuiguang">
+<ol>
+<li class="on" data-id="1">一级下级</li>
+<li data-id="2">二级下级</li>
+</ol>
+</div>
+
+<div class="Personal">
+   
+<div class="innercontent1 show_hide show1">
+ <table width="95%" border="1" cellspacing="0" cellpadding="5" style=" margin:0px auto" bgcolor="#eee" bordercolor="#CCCCCC">
+   <tr>
+     <td width="50" height="35" align="center">编号</td>
+     <td>&nbsp;帐号</td>
+     <td>&nbsp;等级</td>
+     <td>&nbsp;其他</td>
+   </tr>
+<volist name="one" id="one">
+   <tr style="background:#fff; font-size:12px">
+     <td height="50" align="center" valign="middle"><img src="{$one['head_pic']|default=" __STATIC__/images/user68.jpg"}" onerror="this.src='__STATIC__/images/user68.jpg'" style="width:45px; height:45px"></td>
+     <td>&nbsp;{$one.mobile}</td>
+     <td>&nbsp;<i style="color:#00f;">{$one.level_name}</i></td>
+     <td>&nbsp;<if condition="$one.is_distribut eq 1"><i style="color:#f00;">入驻商家</i></if></td>
+   </tr>  
+  </volist> 
+ </table>
+</div>
+
+<div class="innercontent1 show_hide show2" style="display:none">
+ <table width="95%" border="1" cellspacing="0" cellpadding="5" style=" margin:0px auto" bgcolor="#eee" bordercolor="#CCCCCC">
+   <tr>
+     <td width="50" height="35" align="center">编号</td>
+     <td>&nbsp;帐号</td>
+     <td>&nbsp;等级</td>
+     <td>&nbsp;其他</td>
+   </tr>
+<volist name="two" id="one">
+   <tr style="background:#fff; font-size:12px">
+     <td height="50" align="center" valign="middle"><img src="{$one['head_pic']|default=" __STATIC__/images/user68.jpg"}" onerror="this.src='__STATIC__/images/user68.jpg'" style="width:45px; height:45px"></td>
+     <td>&nbsp;{$one.mobile}</td>
+     <td>&nbsp;<i style="color:#00f;">{$one.level_name}</i></td>
+     <td>&nbsp;<if condition="$one.is_distribut eq 1"><i style="color:#f00;">入驻商家</i></if></td>
+   </tr>  
+  </volist> 
+ </table>
+</div>
+
+</div> 
+</div>
+
+<a href="javascript:goTop();" class="gotop"><img src="__STATIC__/images/topup.png"></a> 
+</div>
+<script>
+        $('.user_tuiguang ol li').click(function () {
+            $('.user_tuiguang ol li').removeClass("on");
+            $(this).addClass("on");
+			$('.show_hide').hide();
+			$('.show'+$(this).data('id')).show();
+			
+        })
+</script>
+</body>
+</html>

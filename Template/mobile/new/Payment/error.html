@@ -1,0 +1,69 @@
+<include file="Public/header"/>
+<body>
+<header style="display:none">
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">支付失败</div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<include file="Public/menu"/> 
+</header>
+    <link rel="stylesheet" href="__STATIC__/html/css/weui.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="__STATIC__/html/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__STATIC__/html/css/main.css">
+    <link rel="stylesheet" href="__STATIC__/html/css/home.css">
+    <link rel="stylesheet" href="__STATIC__/html/css/theme-color.css">
+<link rel="stylesheet" href="__STATIC__/css/success_index.css" type="text/css">
+ <!--------在线客服-------------->
+<include file="Public/kefu" />
+ <!--------在线客服-------------->    
+    <div class="order-header">
+    	<div class="layout after">
+        	<div class="fl">
+            	<div class="logo pa-to-36 wi345">
+                	<a href="/"><img src="{$tpshop_config['shop_info_store_logo']}" alt=""></a>
+                </div>
+            </div>
+        	<div class="fr">
+            	<div class="pa-to-36 progress-area">
+                	<div class="progress-area-wd" style="display:none">我的购物车</div>
+                	<div class="progress-area-tx" style="display:none">填写核对订单信息</div>
+                	<div class="progress-area-cg">成功提交订单</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout after-ta order-ha">
+    	<div class="erhuh">
+        	<i class="icon-sucsa"></i>
+            <h3 style="color:#e01d20">抱歉订单支付失败！</h3>
+            <if condition="$master_order_sn neq ''">
+	            <p class="succ-p">订单号：&nbsp;&nbsp;{$master_order_sn}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;付款金额（元）：&nbsp;&nbsp;<b>{$sum_order_amount}</b>&nbsp;<b>元</b></p>
+            <else />
+	            <p class="succ-p">订单号：&nbsp;&nbsp;{$order['order_sn']}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;付款金额（元）：&nbsp;&nbsp;<b>{$order['order_amount']}</b>&nbsp;<b>元</b></p>            
+            </if>
+            <div class="succ-tip">
+            	你可以重新支付
+            </div>
+        </div>
+        <div class="ddxq-xiaq">
+        	<if condition="$master_order_sn neq ''">
+	        	<a href="{:U('Mobile/User/order_list')}">订单详情<i></i></a>
+            <else/>
+	        	<a href="{:U('/Mobile/User/order_detail',array('id'=>$order['order_id']))}">订单详情<i></i></a>
+            </if>
+        </div>
+
+    </div>
+<!--------footer-开始-------------->
+
+<!--------footer-结束-------------->    
+</body>
+</html>

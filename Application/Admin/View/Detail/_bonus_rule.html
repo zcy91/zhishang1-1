@@ -1,0 +1,91 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+  <include file="Public/breadcrumb"/>
+    <section class="content">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 规则设置</h3>
+                </div>
+                <div class="panel-body">
+   
+                    <!--表单数据-->
+                    <form method="post"  onsubmit="return checkName();">                    
+                        <!--通用信息-->
+                    <div class="tab-content">                 	  
+                        <div class="tab-pane active" id="tab_tongyong">
+                           
+                            <table class="table table-bordered">
+                                <tbody>
+                              
+                                <tr>
+                                    <td>规则名称:</td>
+                                    <td>
+                                        <input type="text" value="{$navigation.name}" name="name" class="form-control" style="width:250px;"/>
+                                        <span id="err_name" style="color:#F00; display:none;">导航名称不能为空!!</span>                                        
+                                    </td>
+                                </tr> 
+   
+                                <tr>
+                                    <td>达标{:tpCache('distribut.jifeng_name')}:</td>
+                                    <td>
+                                        <input type="text" value="{$navigation.jifeng}" name="jifeng" class="form-control" style="width:250px;" onkeyup="value=this.value.replace(/\D+/g,'')"/>
+                                        <span id="err_url" style="color:#F00; display:none;"></span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>奖励比例:</td>
+                                    <td>
+                                        <input type="text" value="{$navigation.bili}" name="bili" id="bili" class="form-control" placeholder="数字不得小于100"  style="width:250px;" onkeyup="value=this.value.replace(/\D+/g,'')"/>%
+                                        <span id="err_url" style="color:#F00;">例：110为1.1倍</span>
+                                    </td>
+                                </tr> 
+                                 
+                                <tr>
+                                    <td>排序:</td>
+                                    <td>
+                                        <input type="text" value="{$navigation.sort}" name="sort" class="form-control" style="width:200px;" placeholder="1"/>                               
+                                    </td>
+                                </tr>  
+                                <tr>
+                                    <td>备注:</td>
+                                    <td><textarea name="bz" class="form-control" style="width:205px;">{$navigation.bz}</textarea>
+                                        <span id="err_url" style="color:#F00; display:none;"></span>
+                                    </td>
+                                </tr> 
+                                                                                           
+                                </tbody>                                
+                                </table>
+                        </div>                           
+                    </div>              
+                    <div class="pull-right">
+                        <input type="hidden" name="id" value="{$navigation.id}">
+                        <button class="btn btn-primary" title="" data-toggle="tooltip" type="submit" data-original-title="保存">保存</button>
+                    </div>
+			    </form><!--表单数据-->
+                </div>
+            </div>
+        </div>    <!-- /.content -->
+    </section>
+</div>
+<script>
+// 判断输入框是否为空
+function checkName(){
+
+	var bili = $("input[ name='bili' ] ").val();
+    if(bili<=100)
+	{
+	   alert("比例设置不可小于等于100");	
+	   $("input[ name='bili' ] ").focus();
+		return false;
+	}
+	return true;
+}
+</script>
+</body>
+</html>

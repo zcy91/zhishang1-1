@@ -1,0 +1,35 @@
+<div style=" height:40px;"></div>
+<div class="bottm_nav">
+	 <ul>
+	 	<li class="bian"><a href="{:U('Store/index',array('store_id'=>$store[store_id]))}">店铺首页</a></li>
+	 	<li class="bian"><a href="{:U('Store/store_goods_class',array('store_id'=>$store[store_id]))}">店铺分类</a></li>
+	 	<li class="bian"><a href="{:U('Store/about',array('store_id'=>$store[store_id]))}">店铺简介</a></li>
+	 	<li><a href="{:U('Store/fastbuy',array('store_id'=>$store[store_id]))}">快捷支付</a></li>
+	 </ul>
+</div>
+<script>
+//收藏店铺
+$('#favoriteStore').click(function () {
+  if (getCookie('user_id') == '') {
+	  if(confirm('请先登录')){
+       layer.confirm('您还没有登陆', {btn: ['去登陆','再看看'],title:"提示"}, 
+          function(){layer.msg('正在为你跳转',{time:1000,},function(){window.location.href = "{:U('Mobile/User/login')}";});},
+          function(){layer.msg('登陆后：才可以收藏店铺',{time:2000, });});
+	  }                     	
+  } else {
+    $.ajax({
+      type: 'post',
+      dataType: 'json',
+      data: {store_id: $(this).attr('data-id')},
+      url: "{:U('Home/Store/collect_store')}",
+      success: function (res) {
+        if (res.status == 1) {
+		  layer.msg('成功添加至收藏夹',{time:1000,},function(){ window.location.reload()});
+        } else {
+		  layer.msg(res.msg,{time:2000});
+        }
+      }
+    });
+  }
+});
+</script>

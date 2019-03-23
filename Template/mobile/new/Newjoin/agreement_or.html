@@ -1,0 +1,111 @@
+<include file="Public/header"/>
+<link href="__STATIC__/pc/qt_style.css" rel="stylesheet" type="text/css" />
+<link href="__STATIC__/pc/common.min.css" rel="stylesheet" type="text/css" />
+<body>
+<header>
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">入驻协议</div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+</header>
+<include file="Public/menu"/>
+<style>
+    .steps>li{
+        width: 1.2rem;
+        margin-right: 0;
+        height: 80px;
+        background: none;
+    }
+    .steps>li:first-of-type{
+        left: 0;
+    }
+    .steps>li>b{
+        display: inline-block;
+        float: left;
+        width: 0.6rem;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        border-radius: 50%;
+        background: rgb(204,204,204);
+        transform: scale(1.1);
+    }
+    .steps>li>span{
+        width: 0.6rem;
+        display: inline-block;
+        float: left;
+        background: rgb(204,204,204);
+        height: 0.08rem;
+        position: relative;
+        top: 17%;
+        left: 0px;
+    }
+    .cur{
+        background: none!important;
+    }
+    .ok{
+        background: none!important;
+    }
+    .cur b{
+        background: rgb(204,204,204)!important;
+    }
+    .ok b{
+        background: rgb(204,0,1)!important;
+    }
+    .ok em{
+        color: rgb(204,0,1)!important;
+    }
+</style>
+<script>
+    document.documentElement.style.fontSize=(document.documentElement.offsetWidth/6.5)+"px";
+</script>
+	<form action="" id="queryForm" name="query" method="post">
+    <div class="gome-layout-area pb50 clearfix">
+    	<ul class="steps clearfix">
+            <!--" li first cur ok"-->
+            <!--span going-->
+            <!--li last-->
+            <!--em f-->
+        	<li class="first cur ok"><b>1</b><span class="going"></span><em class="f">入驻须知</em></li>
+        	<li><b>2</b><span></span><em class="f">基本信息</em></li>
+        	<li><b>3</b><span></span><em class="f">店铺信息</em></li>
+        	<li><b>4</b><span></span><em class="f">资质上传</em></li>
+        	<li><b>5</b><em class="f">等待审核</em></li>
+        </ul>
+        <div class="settled-agreement">
+        	<div class="agreement-title"><span>协议确认</span></div>
+            <div class="agreement-con">
+            	<div class="agreement-article">
+                  <tpshop sql="SELECT * FROM `__PREFIX__article` where cat_id =4 and is_open=1  and article_id=25  ORDER BY article_id asc" key="k" item='v'>                   
+			    	{$v.content|htmlspecialchars_decode}
+                  </tpshop> 
+                </div>
+            </div>
+        </div>
+        <label class="agree clearfix" for="1" style=" width:100%; text-align:center; padding:10px 0px; "><input type="checkbox" hidefocus="ture" name="check2" id="check2" class="inputcheck" />我已阅读并同意接受以上所有协议</label >
+        <div class="gome-btn">
+        	<a href="javascript:nextStep();" class="gome-btn-red" style="color:#fff">同意并继续</a>
+        </div>
+    </div>
+</form>
+<include file="Public/min-footer" /> 
+<!--footerEnd-->
+	<script language="javascript">
+		function nextStep() {
+			// 对协议确认做判断
+			var check2 = document.getElementById("check2");
+			if (check2.checked == true) {
+				document.getElementById('queryForm').submit();
+			} else {
+				alert("请同意以上协议");
+			}
+		}
+	</script>
+</body>
+</html>

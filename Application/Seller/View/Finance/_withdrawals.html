@@ -1,0 +1,146 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content ">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回管理员列表"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i>提现申请</h3>
+                </div>
+                <div class="panel-body ">   
+                    <!--表单数据-->
+                    <form method="post" id="withdrawals_form">                    
+                        <!--通用信息-->
+                    <div class="tab-content col-md-10">                 	  
+                        <div class="tab-pane active" id="tab_tongyong">                           
+                            <table class="table table-bordered">
+                                <tbody>     
+                                <tr>
+                                    <td class="col-sm-2">帐户可提：</td>
+                                    <td class="col-sm-6">{$withdrawals_max}元</td>
+                                    <td class="col-sm-4"></td>
+                                </tr>                            
+                                <tr>
+                                    <td class="col-sm-2">提现金额：</td>
+                                    <td class="col-sm-6">
+                                        <input type="text" class="form-control"  name="money" id="money" value="{$withdrawals.money}"  placeholder="最少提现{:tpCache('distribut.sys_store_min_amount')}起" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')"/>
+                                    </td>
+                                    <td class="col-sm-4"></td>
+                                </tr>   
+                                <tr>
+                                    <td>银行名称：</td>
+                                    <td>
+	                                    <input type="text" class="form-control" placeholder="如:支付宝,农业银行,工商银行等..." name="bank_name" id="bank_name" value="{$withdrawals.bank_name}" />
+                                    </td>
+                                    <td></td>                                    
+                                </tr>                                
+                                <tr>
+                                    <td>收款账号：</td>
+                                    <td>
+	                                    <input type="text" class="form-control" placeholder="如:支付宝账号,建设银行账号" name="account_bank" id="account_bank" value="{$withdrawals.account_bank}" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>开户名：</td>
+                                    <td>
+	                                    <input type="text" class="form-control" placeholder="开户人姓名" name="account_name" id="account_name" value="{$withdrawals.account_name}" />
+                                    </td>
+                                </tr>   
+                                <tr>
+                                    <td></td>
+                                    <td><p style="font-size:14px; color:#666"  class="name_html">(当前提现手续费:<span style="color:#f00">万分之{:tpCache('distribut.sys_store_fee')}</span>,<span style="color:#00f">不满二元扣2元</span>)</p>
+                                    </td>
+                                </tr>                                       
+                                </tbody> 
+                                <tfoot>
+                                	<tr>
+                                	<td>
+                                		<input type="hidden" name="id" value="{$withdrawals.id}">
+                                	</td>
+                               	  <td align="center" valign="middle" ><input class="btn btn-primary" type="button" onclick="checkSubmit()" value="保存" style=" width:50%"></td></tr>
+                                </tfoot>                               
+                                </table>
+                        </div>                           
+                    </div>              
+			    	</form><!--表单数据-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+
+ $("#money").on("input",function(e){
+     //获取input输入的值
+	    var money=e.delegateTarget.value;
+		var bili="{:tpCache('distribut.sys_store_fee')}";
+		var fee=money*bili*0.0001;
+		//console.log(fee);
+	     if (fee>2) {
+            $('.name_html').html('本次申请将扣除<span style="color:#f00">'+ fee+ '元</span>手续费');
+         }else{
+            $('.name_html').html('本次申请将扣除<span style="color:#f00">2元</span>手续费');
+         }
+});
+
+    var withdrawals_min = {:tpCache('distribut.sys_store_min_amount')};
+    var withdrawals_max = {$withdrawals_max};
+
+// 表单验证提交
+function checkSubmit(){
+
+	var money = $.trim($('#money').val());
+	var bank_name = $.trim($('#bank_name').val());
+	var account_bank = $.trim($('#account_bank').val());
+	var account_name = $.trim($('#account_name').val());
+    //console.log(withdrawals_min);
+	if(money == '')
+	{
+		layer.msg('提现金额必填');	
+		$('#money').focus();
+		return false;
+	}
+    if(withdrawals_min > withdrawals_max){
+		layer.msg('申请提现金额不得小于￥'+withdrawals_min);	
+		$('#money').focus();
+        return false;
+    }
+    if(money < withdrawals_min)
+    {
+		layer.msg('提现金额必须大于'+withdrawals_min);	
+		$('#money').focus();
+        return false;
+    }
+    if(money > withdrawals_max){
+		layer.msg('您的最多可提现金￥'+withdrawals_max);	
+		$('#money').focus();
+        return false;
+    }
+    if(bank_name == '')
+	{
+		layer.msg('银行名称必填');	
+		$('#bank_name').focus();
+		return false;
+	}
+	if(account_bank == '')
+	{
+		layer.msg('收款账号必填');	
+		$('#account_bank').focus();
+		return false;
+	}
+	if(account_name == '')
+	{
+		layer.msg('开户名必填');	
+		$('#account_name').focus();
+		return false;
+	}
+
+	$('#withdrawals_form').submit();
+}
+</script>
+</body>
+</html>

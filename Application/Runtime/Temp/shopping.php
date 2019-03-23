@@ -1,0 +1,1 @@
+a:3:{s:12:"freight_free";s:2:"50";s:17:"auto_confirm_date";s:1:"5";s:18:"auto_transfer_date";s:1:"1";}

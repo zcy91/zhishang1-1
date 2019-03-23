@@ -1,0 +1,268 @@
+<include file="Public/header"/>
+<body>
+<header style="display:none">
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">会员中心</div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<include file="Public/menu"/> 
+</header>
+    <link rel="stylesheet" href="__STATIC__/html/css/weui.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="__STATIC__/html/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__STATIC__/html/css/main.css">
+    <link rel="stylesheet" href="__STATIC__/html/css/home.css">
+    <link rel="stylesheet" href="__STATIC__/html/css/theme-color.css">
+
+
+<footer class="zyw-footer" style="display:none">
+    <div class="zyw-container white-bgcolor">
+        <div class="weui-tabbar">
+            <a href="{:U('Index/index')}" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="./../Template/mobile/new/Static/html/img/svg/foot-1.svg" alt="">
+                </div>
+                <p class="weui-tabbar__label">首页</p>
+            </a>
+
+            <a href="{:U('Mobile/index/street')}" class="weui-tabbar__item weui-bar__item--on">
+                <div class="weui-tabbar__icon">
+                    <img src="./../Template/mobile/new/Static/html/img/svg/store.png" alt="">
+                </div>
+                <p class="weui-tabbar__label">店铺</p>
+            </a>
+            <a href="{:U('User/index')}" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="./../Template/mobile/new/Static/html/img/svg/foot-5.svg" alt="">
+                </div>
+                <p class="weui-tabbar__label">我的</p>
+            </a>
+        </div>
+    </div>
+</footer>
+<div id="tbh5v0">
+<div class="user_com">
+
+<section class="zyw-container">
+<include file="Public/uer_topnav"/>
+    <div class="weui-flex home-order white-bgcolor mb-625">
+        <div class="weui-flex__item">
+        	<p class="weui-flex__label">{$user['dai_points']}</p>
+          <p class="weui-flex__label"><b>待激活</b></p>
+          <if condition="tpCache('distribut.point_yue_jifeng') neq 0">
+          <p class="weui-flex__label"><a href="{:U('Mobile/User/jifeng_jihuo')}">激活</a></p> 
+          </if>
+        </div>
+        <div class="weui-flex__item">
+        	<p class="weui-flex__label">{$user['cold_points']}</p>
+          <p class="weui-flex__label"><b>冷钱包</b></p>
+        </div>
+        <div class="weui-flex__item">
+        	<p class="weui-flex__label">{$user['pay_points']}</p>
+          <p class="weui-flex__label"><b>热钱包</b></p>
+          
+        <if condition="tpCache('distribut.point_shifang_leng') neq 0">
+		<p class="weui-flex__label"><a href="{:U('Mobile/User/jifeng_buy')}" class="on">购买</a></p> 
+         </if>
+        </div>
+    </div>
+
+
+<div class="Wallet" style="display:none">
+	<ul>
+	<li class="bain1"><strong>￥{$user['user_money']}元</strong><span>余额</span></li>
+<!--<li class="bain1" s><strong>{$coupon_count}</strong><span>优惠券</span></li>-->
+	<li class="bain1"><strong>{$user['pay_points']}</strong><span>{:tpCache('distribut.hot_jifeng_name')}</span></li>
+    <li ><strong>{$user['cold_points']}</strong><span>{:tpCache('distribut.cold_jifeng_name')}</span></li>
+	</ul>
+    <a href="{:U('Mobile/User/points')}"><em class="Icon Icon1"></em><dl class="b"><dt>我的钱包</dt><dd style="color:#aaaaaa;">余额:{$user['user_money']}元</dd></dl></a>
+	<!--<a href="{:U('Mobile/User/account')}"><em class="Icon Icon1"></em><dl><dt>我的钱包</dt><dd style="color:#aaaaaa;">查看我的钱包</dd></dl></a>-->
+	<a><em class="Icon Icon16"></em><dl class="b"><dt>待释放{:tpCache('distribut.cold_jifeng_name')}额度</dt><dd>{$user['dai_points']}</dd></dl></a>
+	<a href="{:U('Mobile/User/jifeng_jihuo')}"><em class="Icon Icon3"></em><dl class="b"><dt>激活{:tpCache('distribut.cold_jifeng_name')}</dt><dd>激活后增加{:tpCache('distribut.cold_jifeng_name')},且赠送{:tpCache('distribut.equity_name')}&nbsp;</dd></dl></a>
+  <a href="{:U('Mobile/User/jifeng_buy')}"><em class="Icon Icon14"></em><dl class="b"><dt>购买{:tpCache('distribut.hot_jifeng_name')}</dt><dd>交易后增加{:tpCache('distribut.hot_jifeng_name')}&nbsp;</dd></dl></a>
+    <a href="{:U('Mobile/User/jifeng_yue')}"><em class="Icon Icon18"></em><dl class="b"><dt>{:tpCache('distribut.hot_jifeng_name')}转余额</dt><dd>&nbsp;</dd></dl></a>
+    <a href="{:U('Mobile/User/jifeng_zs')}"><em class="Icon Icon17"></em><dl class="b"><dt>{:tpCache('distribut.jifeng_name')}转赠</dt><dd>&nbsp;</dd></dl></a>
+</div>
+    <div class="home-cont weui-cells mb-625">
+        <a href="{:U('Mobile/User/points')}" class="weui-cell weui-cell_access">
+            <div class="weui-cell__bd">
+                <p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/qb.png" alt=""> 我的钱包</p>
+            </div>
+            <div class="weui-cell__ft choose-des">余额:{$user['user_money']}</div>
+        </a>
+
+        <a class="weui-cell weui-cell_access" href="{:U('Mobile/User/order_list')}">
+            <div class="weui-cell__bd">
+                <p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/user_ico1.png" alt=""> 全部订单</p>
+            </div>
+            <div class="weui-cell__ft choose-des">我的订单</div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="{:U('Mobile/User/comment')}">
+            <div class="weui-cell__bd">
+                <p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/user_ico2.png" alt=""> 我的评价</p>
+            </div>
+            <div class="weui-cell__ft choose-des">收货后才可评价</div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="{:U('Mobile/User/collect_list')}">
+            <div class="weui-cell__bd">
+                <p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/user_ico3.png" alt=""> 我的收藏</p>
+            </div>
+            <div class="weui-cell__ft choose-des">商品与店铺</div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="{:U('User/address_list')}">
+            <div class="weui-cell__bd">
+                <p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/user_ico4.png" alt=""> 地址管理</p>
+            </div>
+            <div class="weui-cell__ft choose-des">收货地址库</div>
+        </a>   
+    </div>
+    <div class="home-cont weui-cells mb-625">
+    
+<if condition="tpCache('distribut.point_xianjin') neq 0">
+        <a class="weui-cell weui-cell_access" href="{:U('Mobile/User/jifeng_yue')}">
+            <div class="weui-cell__bd">
+                <p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/user_ico5.png" alt=""> {:tpCache('distribut.jifeng_name')}转余额</p>
+            </div>
+            <div class="weui-cell__ft choose-des">转换后方可提现</div>
+        </a>
+</if>
+<if condition="tpCache('distribut.sys_jifeng_zs') eq 1">
+        <a class="weui-cell weui-cell_access" href="{:U('Mobile/User/jifeng_zs')}">
+            <div class="weui-cell__bd">
+                <p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/user_ico6.png" alt=""> {:tpCache('distribut.jifeng_name')}转赠</p>
+            </div>
+            <div class="weui-cell__ft choose-des">转给其他会员</div>
+        </a>
+</if> 
+    </div>
+
+    <div class="home-cont weui-cells mb-625">
+
+   
+   
+   
+<if condition='$user[is_sq] eq 1'>
+
+    <a href="{:U('User/zwzq_list')}" class="weui-cell weui-cell_access">
+       <div class="weui-cell__bd"><p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/zl.png" alt="">&nbsp;债务债权</p></div>
+       <div class="weui-cell__ft choose-des">上传债务信息，获得额度</div>
+    </a>
+       
+<else />
+    <a href="{:U('Mobile/User/ziliao_ws')}" class="weui-cell weui-cell_access">
+       <div class="weui-cell__bd"><p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/zl.png" alt="">&nbsp;<if condition='$user[is_sq] eq 1'>修改资料<else />完善资料</if></p></div> 
+       <div class="weui-cell__ft choose-des">上传债务信息，获得额度</div>
+    </a>
+    
+</if>  
+
+    
+    
+    <a href="{:U('Mobile/User/userinfo')}"  class="weui-cell weui-cell_access">
+       <div class="weui-cell__bd"><p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/aq.png" alt=""> 帐户安全</p></div>
+       <div class="weui-cell__ft choose-des">修改帐户信息</div>
+    </a>
+
+
+
+ <if condition="empty($merchant)">   
+      <a href="{:U('Newjoin/agreement')}" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd"><p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/dp.png" alt=""> 商家入驻</p></div>
+        <div class="weui-cell__ft choose-des">申请入驻</div>
+      </a>
+ <else/>
+
+<switch name="merchant[apply_state]">
+<case value="0">
+   <a href="{:U('Newjoin/apply_info')}" class="weui-cell weui-cell_access">
+       <div class="weui-cell__bd"><p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/dp.png" alt=""> 已申请入驻</p></div>
+       <div class="weui-cell__ft choose-des">待审核</div>
+   </a>
+</case>
+<case value="1">
+   <a href="{:U('User/merchant_list')}" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd"><p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/dp.png" alt=""> 店铺信息</p></div>
+      <div class="weui-cell__ft choose-des">已审核</div>
+   </a>
+</case>
+<case value="2">
+   <a href="{:U('Newjoin/agreement')}"  class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd"><p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/dp.png" alt=""> 申请已审核</p></div>
+      <div class="weui-cell__ft choose-des">未通过</div>
+   </a>  
+</case>
+</switch>
+</if>
+
+        
+        <a class="weui-cell weui-cell_access" href="{:U('User/tuiguang')}">
+            <div class="weui-cell__bd">
+                <p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/user_ico7.png" alt=""> 推广中心</p>
+            </div>
+            <div class="weui-cell__ft choose-des">推荐您的好友</div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="{:U('User/tuandui')}">
+            <div class="weui-cell__bd">
+                <p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/user_ico8.png" alt=""> 我的团队</p>
+            </div>
+            <div class="weui-cell__ft choose-des">推广成功的会员</div>
+        </a>
+    </div>
+    
+    <div class="home-cont weui-cells mb-625">
+        <a class="weui-cell weui-cell_access" href="{:U('User/logout')}">
+            <div class="weui-cell__bd">
+                <p class="choose-text"><img src="./../Template/mobile/new/Static/html/img/user_ico9.png" alt=""> 注销登录</p>
+            </div>
+            <div class="weui-cell__ft choose-des">安全退出会员中心</div>
+        </a>
+    </div>
+</section>
+<div class="Wallet" style="display:none">
+	<a href="{:U('Mobile/User/order_list')}" ><em class="Icon Icon2"></em><dl class="b"><dt>全部订单</dt><dd>查看订单</dd></dl></a>
+	<a href="{:U('Mobile/User/comment')}"><em class="Icon Icon4"></em><dl class="b"><dt>我的评价</dt><dd>查看评价</dd></dl></a>
+	<a href="{:U('Mobile/User/collect_list')}"><em class="Icon Icon10"></em><dl class="b"><dt>我的收藏</dt><dd>&nbsp;</dd></dl></a>
+	<a href="{:U('User/address_list')}"><em class="Icon Icon5"></em><dl class="b"><dt>地址管理</dt><dd>&nbsp;</dd></dl></a>
+</div>
+<div class="Wallet" style="display:none">
+    <a href="{:U('Mobile/User/ziliao_ws')}"><em class="Icon Icon15"></em><dl class="b"><dt>完善资料</dt><dd>&nbsp;</dd></dl></a>   
+    <a href="{:U('User/tuiguang')}"><em class="Icon Icon13"></em><dl class="b"><dt>推广中心</dt><dd>&nbsp;</dd></dl></a>
+    <a href="{:U('User/tuandui')}"><em class="Icon Icon6"></em><dl class="b"><dt>我的团队</dt><dd>&nbsp;</dd></dl></a>
+    
+    <a href="{:U('User/message_list')}"  style="display:none"><em class="Icon Icon7"></em><dl class="b"><dt>我的留言</dt><dd>&nbsp;</dd></dl></a>
+	<a href="{:U('User/return_goods_list')}" style="display:none"><em class="Icon Icon11"></em><dl class="b"><dt>售后服务</dt><dd>&nbsp;</dd></dl></a>
+ 
+<if condition="$user.is_distribut eq 1">
+ <if condition="empty($merchant)">   
+      <a href="{:U('Newjoin/agreement')}"><em class="Icon Icon12"></em><dl><dt>申请商家入驻</dt><dd>&nbsp;</dd></dl></a>
+ <else/>
+	
+<switch name="merchant.apply_state">
+<case value="0"><a href="{:U('Newjoin/agreement')}"><em class="Icon Icon12"></em><dl><dt>已申请</dt><dd>待审核</dd></case></case>
+<case value="1"><a href="{:U('User/merchant_list')}"><em class="Icon Icon12"></em><dl><dt style="color:#F00">店铺信息</dt><dd>已审核</dd></case></case>
+<case value="2"><a href="{:U('Newjoin/agreement')}"><em class="Icon Icon12"></em><dl><dt style="color:#F00">申请已审核</dt><dd>未通过</dd></case></case>
+</switch>
+</dl></a>
+</if>
+</if>
+</div>
+<div class="Wallet" style="display:none">
+	<a href="{:U('User/logout')}"><em class="Icon Icon8"></em><dl><dt>注销登录</dt></dl></a>
+</div>
+</div>
+<include file="Public/footer"/>
+</div>
+<style>
+
+.vf_nav>ul>li{ padding:0px; margin-top:-12px}
+</style>
+<include file="Public/footer_nav"/>
+</body>
+</html>

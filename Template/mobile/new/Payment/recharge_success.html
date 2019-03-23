@@ -1,0 +1,55 @@
+<include file="Public/header"/>
+<body>
+<header >
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="javascript:history.back(-3)" title="返回"></a></div>
+    <div class="h-mid">支付成功</div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<include file="Public/menu"/> 
+</header>
+    <link rel="stylesheet" href="__STATIC__/html/css/weui.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="__STATIC__/html/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__STATIC__/html/css/main.css">
+    <link rel="stylesheet" href="__STATIC__/html/css/home.css">
+    <link rel="stylesheet" href="__STATIC__/html/css/theme-color.css">
+<link rel="stylesheet" href="__STATIC__/css/success_index.css" type="text/css">
+ <!--------在线客服-------------->    
+    
+    <div class="order-header">
+    	<div class="layout after">
+
+        	<div class="fr">
+            	<div class="pa-to-36 progress-area">
+            	    <div class="progress-area-wd" style="display:none">充值</div>
+                	<div class="progress-area-tx" style="display:none">填写充值金额，选择支付</div>
+                	<div class="progress-area-cg">成功提交充值单</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout after-ta order-ha">
+    	<div class="erhuh">
+        	<i class="icon-succa"></i>
+            <h3>恭喜您，充值成功！</h3>
+            <p class="succ-p">充值单号：&nbsp;&nbsp;{$order['order_sn']}<br/>付款金额（元）：&nbsp;&nbsp;<b>{$order['account']}</b>&nbsp;<b>元</b></p>
+            <div class="succ-tip">
+            	您的充值金额已到账，您可以使用余额支付订单，祝您生活愉快！ 
+            </div>
+        </div>
+        <div class="ddxq-xiaq">
+            <a href="{:U('/Mobile/User/recharge',array('order_id'=>$order['order_id']))}">订单详情<i></i></a>
+        </div>
+    </div>
+<!--------footer-开始-------------->
+
+<!--------footer-结束-------------->    
+</body>
+</html>

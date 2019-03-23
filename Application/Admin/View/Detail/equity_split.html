@@ -1,0 +1,69 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+  <include file="Public/breadcrumb"/>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-list"></i>&nbsp;{:tpCache('distribut.equity_name')}分红记录</h3>
+        </div>
+        <div class="panel-body">    
+
+                   
+                        
+          <div id="ajax_return"> 
+                 
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="sorting text-center">期号</th>
+                                <th class="sorting text-center">总购{:tpCache('distribut.jifeng_name')}</th> 
+                                <th class="sorting text-center">总平分</th>  
+                                <th class="sorting text-center">总股</th>
+                                <th class="sorting text-center">比例</th>                               
+                                <th class="sorting text-center">每股可分</th>
+                                <th class="sorting text-center">发放时间</th>  
+                                <th class="sorting text-center">发放</th>                              
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="List" id="list">
+                                <tr>
+                                    <td class="text-left">{$list.bz}</td> 
+                                    <td class="text-left">{$list.jifeng_sum}</td> 
+                                    <td class="text-left">{$list.jifeng}</td> 
+                                    <td class="text-left">{$list.equity}</td> 
+                                    <td class="text-left">{$list.bili}%</td>  
+                                    
+                                    <td class="text-left">{$list.pingfeng}</td>   
+                                    <td class="text-left">{$list.add_time|date="Y-m-d h:i:s",###}</td>  
+                                                                    
+                                    <td class="text-center">
+                                        <img width="20" height="20" src="__PUBLIC__/images/<if condition='$list[is_show] eq 1'>yes.png<else />cancel.png</if>" />
+                                    </td>
+
+           
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                
+              <div class="row">
+              	    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row --> 
+  </section>
+  <!-- /.content --> 
+</div>
+<!-- /.content-wrapper -->
+</body>
+</html>

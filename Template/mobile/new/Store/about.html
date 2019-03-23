@@ -1,0 +1,79 @@
+<include file="Public/bottm_top"/>
+</head>
+<body style=" background:#F5F5F5">
+<header>
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">
+         	店铺简介
+          </div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+</header>
+<include file="Public/menu"/>
+<div class="about_top">
+	<dl>
+		<dt><img src="{$store.store_logo|default='__STATIC__/images/v-shop/logo.png'}"></dt>
+		<dd><span>{$store.store_name}</span>
+		<em>初级店铺</em>
+		<em>商品数量：{$total_goods}</em>
+		</dd>
+		<p>
+        <if condition="$scdp eq 1">
+         <a  data-id="{$store['store_id']}"  href="javascript:;" style="background:#090">已收藏</a>
+        <else/>
+         <a id="favoriteStore" data-id="{$store['store_id']}"  href="javascript:;">收藏</a>
+        </if>
+        </p>
+	</dl>
+</div>
+<div class="about_main">
+	<dl>
+	<dt>好评率：</dt>
+	<dd class="hei">100%</dd>
+	</dl>
+	<dl>
+	<dt>所在地：</dt>
+	<dd class="hei">{$store.store_address}</dd>
+	</dl>
+	<dl>
+	<dt>开店时间：</dt>
+	<dd class="hei">{$store.store_time|date='Y-m-d',###}</dd>
+	</dl>
+	<dl>
+	<dt>详细地址：</dt>
+	<dd class="hei">{$store.store_address}</dd>
+	</dl>
+</div>
+<div class="about_main">
+	<dl>
+	<dt>描述相符：</dt>
+	<dd class="red">{$store.store_desccredit}</dd>
+	</dl>
+	<dl>
+	<dt>服务态度：</dt>
+	<dd class="red">{$store.store_servicecredit}</dd>
+	</dl>
+	<dl>
+	<dt>物流服务：</dt>
+	<dd class="red">{$store.store_deliverycredit}</dd>
+	</dl>
+</div>
+<div class="about_main">
+	<h3>二维码</h3>
+	<span>
+	<img  src="{:U('Home/Index/store_qrcode',array('store_id'=>$store[store_id],'t_id'=>$store[user_id]))}">
+		扫描二维码  关注有惊喜
+	</span>
+</div>
+<a href="tel:{$store.store_phone}" class="link" style=" color:#FFF;font-size:18px; ">联系卖家</a>
+<include file="Public/bottm_nav"/>
+
+</body>
+</html>

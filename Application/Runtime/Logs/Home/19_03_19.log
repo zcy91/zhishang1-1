@@ -1,0 +1,131 @@
+[ 2019-03-19T10:26:40+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.016001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027002s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.028002s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+
+[ 2019-03-19T10:27:07+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+
+[ 2019-03-19T10:27:10+08:00 ] 127.0.0.1 /index.php?m=Home&c=Cart&a=header_cart_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' E:\PHPTutorial\WWW\tpshop\Application\Home\Logic\CartLogic.class.php 第 160 行.
+NOTIC: [8] Undefined index: user_id E:\PHPTutorial\WWW\tpshop\Application\Home\Logic\CartLogic.class.php 第 160 行.
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' E:\PHPTutorial\WWW\tpshop\Application\Home\Logic\CartLogic.class.php 第 168 行.
+NOTIC: [8] Undefined variable: exchange_integral E:\PHPTutorial\WWW\tpshop\Application\Home\Logic\CartLogic.class.php 第 192 行.
+INFO: [ view_begin ] --START--
+INFO: Run Home\Behaviors\testBehavior [ RunTime:0.001000s ]
+INFO: [ view_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 模板不存在:./Template/pc/soubao/Cart/header_cart_list.html
+
+[ 2019-03-19T10:42:30+08:00 ] 127.0.0.1 /index.php?m=Home&c=api&a=get_store_category&parent_id=20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+NOTIC: [8] Undefined variable: html E:\PHPTutorial\WWW\tpshop\Application\Home\Controller\ApiController.class.php 第 93 行.
+
+[ 2019-03-19T10:45:03+08:00 ] 127.0.0.1 /index.php?m=Home&c=api&a=get_store_category&parent_id=26
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+NOTIC: [8] Undefined variable: html E:\PHPTutorial\WWW\tpshop\Application\Home\Controller\ApiController.class.php 第 93 行.
+
+[ 2019-03-19T10:47:25+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+
+[ 2019-03-19T10:50:42+08:00 ] 127.0.0.1 /index.php?m=Home&c=api&a=get_store_category&parent_id=26
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+NOTIC: [8] Undefined variable: html E:\PHPTutorial\WWW\tpshop\Application\Home\Controller\ApiController.class.php 第 93 行.
+
+[ 2019-03-19T10:50:48+08:00 ] 127.0.0.1 /index.php?m=Home&c=api&a=get_store_category&parent_id=26
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+NOTIC: [8] Undefined variable: html E:\PHPTutorial\WWW\tpshop\Application\Home\Controller\ApiController.class.php 第 93 行.
+
+[ 2019-03-19T10:52:02+08:00 ] 127.0.0.1 /index.php?m=Home&c=api&a=get_store_category&parent_id=20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+NOTIC: [8] Undefined variable: html E:\PHPTutorial\WWW\tpshop\Application\Home\Controller\ApiController.class.php 第 93 行.
+
+[ 2019-03-19T10:52:45+08:00 ] 127.0.0.1 /index.php?m=Home&c=api&a=get_store_category&parent_id=20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+NOTIC: [8] Undefined variable: html E:\PHPTutorial\WWW\tpshop\Application\Home\Controller\ApiController.class.php 第 93 行.
+
+[ 2019-03-19T14:36:40+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+
+[ 2019-03-19T14:38:12+08:00 ] 127.0.0.1 /index.php?m=Home&c=Api&a=issetMobile&mobile=18257990958
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+
+[ 2019-03-19T14:38:19+08:00 ] 127.0.0.1 /index.php?m=Home&c=Api&a=issetMobile&mobile=18257990958
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+

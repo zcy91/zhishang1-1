@@ -1,0 +1,146 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content">
+    <!-- Main content -->
+    <!--<div class="container-fluid">-->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-list"></i> 申请信息</h3>
+            </div>
+            <div class="panel-body">
+                <form   method="post" onsubmit="return checkUserUpdate(this);">
+                
+                    <table class="table table-bordered">
+                    <tbody>  
+                    <tr>
+                        <td class="col-sm-2">所属类型:</td>
+                        <td >{$zwzq.leixing}</td>
+                        <td></td>
+                    </tr>
+                                      
+                    <tr>
+                        <td class="col-sm-2">平台/关联人名称:</td>
+                        <td >{$zwzq.title}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-2">借款金额:</td>
+                        <td >{$zwzq.money}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-2">平台法人:</td>
+                        <td >{$zwzq.name}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>平台网址:</td>
+                        <td>{$zwzq.site}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>平台帐号:</td>
+                        <td>{$zwzq.account}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>真实姓名:</td>
+                        <td>{$zwzq.u_name}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>身份证:</td>
+                        <td>{$zwzq.u_sfz}</td>
+                    </tr>
+                    <tr>
+                        <td>平台地址:</td>
+                        <td id="order-status">{$zwzq.address}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>申请时间:</td>
+                        <td>{$zwzq.add_time|date='Y-m-d H:i',###}</td>
+                        <td></td>
+                    </tr>
+
+                    <tr style=" background:#eee">
+                        <td>审核:</td>
+                        <td id="order-status">    
+                            <input name="zt" type="radio" value="0" <if condition="$zwzq['zt'] eq 0">checked</if> >&nbsp;审核中&nbsp;                        
+                            <input name="zt" type="radio" value="1" <if condition="$zwzq['zt'] eq 1">checked</if> >&nbsp;通过&nbsp;
+                            <input name="zt" type="radio" value="2" <if condition="$zwzq['zt'] eq 2">checked</if> >&nbsp;未通过
+                        </td>
+                        <td></td>
+                    </tr>                    
+
+                    <tr style=" background:#eee">
+                        <td style="color:#f00">批放额度:</td>
+                        <td><input name="amount" type="text" class="form-control" placeholder="直接增加待激活{:tpCache('distribut.cold_jifeng_name')}额度" value="{$zwzq.amount}" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" /></td>
+                        <td></td>
+                    </tr>
+
+                    <tr style=" background:#eee">
+                        <td>备注:</td>
+                        <td id="order-status"><textarea name="bz" rows="5" class="form-control bz" placeholder="备注未通过原因">{$zwzq.bz}</textarea>
+                        </td>
+                        <td></td>
+                    </tr> 
+<if condition="$zwzq['zt'] eq 0">
+                    <tr>
+                        <td></td>
+                        <td> <button type="submit" class="btn btn-info"><i class="ace-icon fa fa-check bigger-110"></i> 保存操作</button> </td>
+                    </tr>
+        </if> 
+                    </tbody>
+                </table>
+                </form>
+            </div>
+        </div>
+ 	  </div> 
+    </div>    <!-- /.content -->
+   </section>
+</div>
+<script>
+    function checkUserUpdate(){
+        var zt = $("input[type='radio']:checked").val();
+        var amount = $('input[name="amount"]').val();
+        var bz = $('.bz').val();
+        //console.log(zt);
+        var error ='';
+        if(zt==0){
+			 parent.layer.msg("审核状态不正确");
+             return false;
+        }
+        if(zt==1 & amount<=0){
+			 parent.layer.msg("批放额度不正确");
+             return false;
+        }
+        if(zt==2 & bz.length==0){
+			 parent.layer.msg("请填写未通过原因");
+             return false;
+        }
+    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+    $.post('', {id:{$zwzq.id},zt: zt,amount:amount,bz:bz},
+              function(res) {
+			        //console.log(index);
+                    if (res.code == 1) {
+                      parent.layer.msg('操作成功');
+                      parent.layer.close(index);
+					  parent.location.reload();
+                    } else {
+                       parent.layer.msg(res.msg);
+
+                    }
+               });
+
+
+
+return false;
+    }
+</script>
+
+</body>
+</html>

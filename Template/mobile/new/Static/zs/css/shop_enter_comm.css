@@ -1,0 +1,300 @@
+html{
+	/* 防止页面加载的时候由于rem的问题产生布局错乱 */
+	visibility: hidden;
+}
+input{
+	color: #666;
+}
+.container {
+	width: 100%;
+	padding-bottom: 0.4rem;
+	position: relative;
+}
+
+.join_step {
+	height: 1.5rem;
+	padding-bottom: 0.09rem;
+	/* background: red; */
+}
+
+.join_step_content {
+	/* width: 3.9rem; */
+	height: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	text-align: center;
+}
+
+.join_step_content>.join_step_content_ico {
+	height: 0.49rem;
+	margin: 0 auto;
+	margin-top: 0.5rem;
+	width: 2.8rem;
+	/* padding-left: 0.58rem; */
+}
+
+.join_step_content>.join_step_content_ico>i {
+	display: block;
+	float: left;
+	text-align: center;
+	line-height: 0.5rem;
+	color: #fff;
+}
+
+/* 商家入驻步骤-圆形数字 */
+.join_step_content_ico>.j_i_n {
+	width: 0.49rem;
+	height: 0.49rem;
+	font-size: 1em;
+}
+
+/* 商家入驻步骤-横条 */
+.join_step_content_ico>.j_i_h {
+	width: 0.63rem;
+	height: 0.08rem;
+	margin-top: 0.2rem;
+}
+
+/* 商家入驻步骤-已完成步骤颜色 */
+.join_step_content_ico>.j_i_on {
+	background: rgb(206, 29, 29);
+}
+
+/* 商家入驻步骤-未完成步骤颜色 */
+.join_step_content_ico>.j_i_off {
+	background: rgb(178, 178, 178);
+}
+
+.join_step_content_instr {
+	width: auto;
+	display: inline-block;
+	/* height: 0.28rem; */
+	/* line-height: 0.28rem; */
+	font-size: 1em;
+}
+
+.join_step_content_instr>p {
+	/* width: 33.33%; */
+	/* height: 100%; */
+	float: left;
+	text-align: center;
+	margin-right: 5px;
+}
+
+/* 商家入驻步骤-已完成步骤下面介绍颜色 */
+.join_step_content_instr>.p_on {
+	color: rgb(206, 29, 29);
+}
+
+/* 商家入驻步骤-未完成步骤下面介绍颜色 */
+.join_step_content_instr>.p_off {
+	color: rgb(178, 178, 178);
+}
+
+/* 商家入驻步骤其余区域 */
+.other_content {
+	/*width: 7.2rem;*/
+	width:100%;
+	border-left: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+	margin: 0 auto;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+/* 用户输入提示 */
+.user_tip {
+	height: 0.64rem;
+	background: #ddd;
+}
+
+.user_tip h3 {
+	color: rgb(103, 103, 103);
+	font-size: 1.2em;
+	line-height: 0.7rem;
+	text-indent: 15px;
+}
+
+/* 用户输入区域 */
+.input_content {
+	/* overflow: hidden; */
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 0.3rem;
+}
+
+/* 用户输入区域标题 */
+.input_content>.input_c_title {
+	text-indent: 15px;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 0.15rem;
+	color: rgb(70,70,70) !important;
+}
+
+.input_c_ul {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.input_c_ul>li {
+	/* height: 0.37rem; */
+	margin-top: 0.44rem;
+	/* line-height: 0.37rem; */
+
+}
+
+.input_c_ul>li>div {
+	overflow: hidden;
+	position: relative;
+}
+
+.user_input_title {
+	font-size: 1em;
+	display: block;
+	float: left;
+}
+
+.user_input_title>span {
+	color: red;
+}
+
+.user_input_text {
+	border: 0;
+	outline: none;
+	-moz-outline: none;
+	border-radius: 3px;
+	text-indent: 5px;
+	font-size: 1em;
+	display: block;
+	line-height: 1.5em;
+	border: 1px solid #ccc;
+	width: 98%;
+}
+
+.user_input_latlng_ico {
+	position: absolute;
+	display: block;
+	width: 0.38rem;
+	height: 0.5rem;
+	background: url(../img/dw_ico.png) no-repeat;
+	background-size: 50%;
+	-webkit-background-size: 50%;
+	background-position: 50%;
+	right: 6%;
+	top: 0;
+	z-index: 999;
+}
+
+
+
+/* div模拟select标签 */
+.user_input_select {
+	position: relative;
+	/* max-width: 1.26rem; */
+	font-size: 0.8em;
+	overflow: visible !important;
+	float: left;
+	/* cursor: pointer; */
+	/* cursor: -ms-pointer; */
+}
+
+.user_input_select>.user_input_select_result {
+	position: relative;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+.user_input_select_result>p {
+	text-align: center;
+	line-height: 1.7em;
+	background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(rgb(176, 176, 176)));
+	padding-right: 35px;
+	padding-left: 15px;
+	border-top-right-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	border-top-left-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+}
+
+.user_input_select_result>i {
+	width: 20px;
+	line-height: 1.7em;
+	color: #fff;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: -webkit-gradient(linear, center top, center bottom, from(rgb(237, 237, 237)), to(rgb(154, 154, 154)));
+	border-top-right-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+}
+
+.user_input_select_result>i::after {
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	border: 6px solid #fff;
+	left: 15%;
+	top: 30%;
+	position: absolute;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.user_input_select_option_content {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	/* height: 20px; */
+	display: none;
+	z-index: 999;
+	max-height: 3rem;
+	overflow: scroll;
+}
+
+
+.user_input_select_option_content_ul {
+	text-align: center;
+	background: #DDDDDD;
+}
+
+.user_input_select_option_content_ul>li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+
+/* 下一步按钮所在区域 */
+.input_next_step {
+	margin-top: 0.5rem;
+
+}
+
+.input_next_step>a {
+	margin: 0 auto;
+	display: block;
+	width: 80%;
+	height: 0.7rem;
+	text-align: center;
+	line-height: 0.72rem;
+	color: #fff;
+	font-size: 1em;
+	background: rgb(73, 152, 243);
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin-top: 0.16rem;
+}
+
+.input_next_step>a.input_next_step_finish {
+	background: rgb(231, 79, 79);
+}

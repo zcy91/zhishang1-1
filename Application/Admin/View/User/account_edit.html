@@ -1,0 +1,77 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content">
+    <!-- Main content -->
+    <!--<div class="container-fluid">-->
+    <div class="container-fluid">
+        <!--新订单列表 操作信息-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-list"></i> 管理资金</h3>
+            </div>
+            <div class="panel-body">
+
+            <form id="delivery-form" method="post" action="">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <div class="row">
+                            <td class="text-right col-sm-2">操作帐户：</td>
+                            <td colspan="3">
+                                <select name="money_act_type" id="money_act_type" class="input-sm">
+                                    <option value="user_money">余额</option>
+                                    <option value="pay_points">{:tpCache('distribut.hot_jifeng_name')}</option>
+                                    <option value="cold_points">{:tpCache('distribut.cold_jifeng_name')}</option>
+                                    <option value="dai_points">待激活</option>
+                                    <option value="equity">{:tpCache('distribut.equity_name')}</option>
+                                    <option value="frozen_money">冻结</option>
+                                    <option value="distribut_money">分佣</option>
+                                </select>
+                                <input type="text" name="money" class="input-sm" value="0" onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')">
+                            </td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <div class="row">
+                            <td class="text-right col-sm-2">类型：</td>
+                            <td colspan="3">
+                      					<input name="frozen_act_type" type="radio" class="" value="1" checked="checked" >&nbsp;增加
+                      					<input type="radio" class="" name="frozen_act_type" value="-1" >&nbsp;减少
+                          </td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <div class="row">
+                            <td class="text-right col-sm-2">操作备注：</td>
+                            <td colspan="3">
+                                    <textarea name="desc" placeholder="请输入操作备注" rows="3" class="form-control">{$_REQUEST['desc']}</textarea>
+                            </td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <div class="row">
+                            <td colspan="4">
+                                <div class="form-group text-center">
+                                    <button class="btn btn-primary" type="submit" id="disabled">提交</button>
+                                    <button onclick="history.go(-1)"  class="btn btn-primary" type="button">返回</button>
+                                </div>
+                            </td>
+                        </div>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </form>
+
+            </div>
+        </div>
+
+    </div>    <!-- /.content -->
+        </section>
+</div>
+
+

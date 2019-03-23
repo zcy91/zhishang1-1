@@ -1,0 +1,215 @@
+<include file="Public/bottm_top"/>
+</head>
+<body style=" background:#F5F5F5">
+<header>
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">快捷支付</div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+</header>
+<include file="Public/menu"/>
+<div class="about_top">
+	<dl>
+		<dt><img src="{$store.store_logo|default='__STATIC__/images/v-shop/logo.png'}"></dt>
+		<dd><span>{$store.store_name}</span>
+		<em>初级店铺</em>
+		<em>商品数量：{$total_goods}</em>
+		</dd>
+		<p>
+        <if condition="$scdp eq 1">
+         <a  data-id="{$store['store_id']}"  href="javascript:;" style="background:#090">已收藏</a>
+        <else/>
+         <a id="favoriteStore" data-id="{$store['store_id']}"  href="javascript:;">收藏</a>
+        </if>
+        </p>
+	</dl>
+</div>
+<div class="about_main">
+	<dl>
+	<dt>好评率：</dt>
+	<dd class="hei">100%</dd>
+	</dl>
+	<dl>
+	<dt>所在地：</dt>
+	<dd class="hei">{$store.store_address}</dd>
+	</dl>
+	<dl>
+	<dt>开店时间：</dt>
+	<dd class="hei">{$store.store_time|date='Y-m-d',###}</dd>
+	</dl>
+	<dl>
+	<dt>详细地址：</dt>
+	<dd class="hei">{$store.store_address}</dd>
+	</dl>
+</div>
+
+<div class="about_main">
+	<dl>
+	<dt>全额赠送比例：</dt>
+	<dd class="red">{$store.gift_jifeng}%</dd>
+	</dl>
+	<dl>
+	<dt>允许抵扣比例：</dt>
+	<dd class="red">{$store.arrive_jifeng}%</dd>
+	</dl>
+	<dl>
+	<dt>当前{:tpCache('distribut.jifeng_name')}价值：</dt>
+	<dd class="red">1元={:tpCache('distribut.point_rate')}{:tpCache('distribut.jifeng_name')}</dd>
+	</dl>
+    
+	<dl>
+	</dl>
+</div>
+
+<link rel="stylesheet" href="__STATIC__/css/user.css">
+<div class="Personal">
+        <div id="tbh5v0">
+            <div class="innercontent1">
+                <form method="post">
+                    <div class="name"><span>支付金额</span>
+                        <input type="text" name="money" id="money" style="width:65%" placeholder="*支付金额,直接输入数字" class="c-f-text" onKeyUp="value=value.match(/\d+\.?\d{0,2}/,'')" value="50">
+                    </div>
+                    <div class="name1"><span>支付方式</span>
+                    <ul>
+                     <li class="on"><label for="fangshi1"><input type="radio" name="fangshi" value="1" tabindex="1" class="radio" id="fangshi1" checked=true/>赠送{:tpCache('distribut.jifeng_name')}</label></li>
+                     <if condition="$store.arrive_jifeng neq 0">
+                     <li><label for="fangshi2"><input type="radio" name="fangshi" value="2" tabindex="2" class="radio" id="fangshi2" />{:tpCache('distribut.jifeng_name')}抵扣</label></li>
+                     </if>
+                    </ul>
+                    </div>
+                   <div class="name1 name_html" style="text-align:center; color:#f00; font-size:16px">全额支付：50元&nbsp;赠送<?php echo (50*$store["gift_jifeng"]*0.01*tpCache('distribut.point_rate'));?>{:tpCache('distribut.jifeng_name')}</div>
+            <div class="field submit-btn">
+                  <input type="submit" value="立即支付" class="btn_big1" style="background:#f00;"/>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+<a class="link" id="fastbuy" style=" color:#FFF;font-size:18px; width:98%; border-radius:5px; display:none">快捷支付</a>
+<include file="Public/bottm_nav"/>
+<script>
+
+//页面一打开就执行，放入ready是为了layer所需配件（css、扩展模块）加载完毕
+
+$('.name1 ul li').click(function () {
+	        var money=$('#money').val();
+			var bili="{:tpCache('distribut.point_rate')}";
+            $(this).find("input").attr("checked", "checked");
+            $('.name1 ul li').removeClass("on");
+            $(this).addClass("on");
+         if ($(this).find("input").val() == '1') {
+            $('.name_html').html('全额支付：'+ money +'元&nbsp;赠送' + (money*<?php echo ($store["gift_jifeng"]*0.01);?>*bili).toFixed(2) + '{:tpCache('distribut.jifeng_name')}');
+         }else if($(this).find("input").val() == '2') {
+            $('.name_html').html('抵扣支付：'+ (money - (money*<?php echo ($store["arrive_jifeng"]*0.01);?>))+'元&nbsp;抵扣'+(money*<?php echo ($store["arrive_jifeng"]*0.01);?>*bili).toFixed(2)+'{:tpCache('distribut.jifeng_name')}');
+         }
+})
+
+ $("#money").on("input",function(e){
+     //获取input输入的值
+        var fangshi=$('.name1 ul li.on').find("input").val();
+	    var money=e.delegateTarget.value;
+		var bili="{:tpCache('distribut.point_rate')}";
+	     if (fangshi == '1') {
+            $('.name_html').html('赠送{:tpCache('distribut.jifeng_name')}：'+ money + '元&nbsp;赠送'+(money*<?php echo ($store["gift_jifeng"]*0.01);?>*bili).toFixed(2)+'{:tpCache('distribut.jifeng_name')}');
+         }else if(fangshi == '2') {
+            $('.name_html').html('{:tpCache('distribut.jifeng_name')}抵扣：'+ (money - (money*<?php echo ($store["arrive_jifeng"]*0.01);?>))+'元&nbsp;抵扣'+(money*<?php echo ($store["arrive_jifeng"]*0.01);?>*bili).toFixed(2) +'{:tpCache('distribut.jifeng_name')}');
+         }
+});
+
+
+$('#fastbuy').click(function () {
+  if (getCookie('user_id') == '') {
+    layer.confirm('您还没有登陆', {btn: ['去登陆','再看看'],title:"提示"}, 
+      function(){layer.msg('正在为你跳转',{time:1000,},function(){window.location.href = "{:U('Mobile/User/login')}";});},
+      function(){layer.msg('登陆后：才可以收藏店铺',{time:2000, });});
+    return false;                    	
+  } else {
+  layer.open({
+    type: 2,
+    title: '快捷支付',
+    maxmin: true,
+    area: ['300px', '350px'],
+    content:"{:U('Store/fastbuy',array('store_id'=>$store['store_id']))}",
+  });
+
+  }
+});
+$('.btn_big1').click(function () {
+    layer.confirm('一旦交易成功将不可撤销', {btn: ['支付','取消'],title:"快捷支付"}, 
+      function(){checkinfo()},
+      function(){layer.msg('已为您取消快捷交易',{time:2000, });});
+	  return false;
+})
+
+
+function checkinfo(){
+	$(".btn_big1").attr('disabled',true);
+	var money=$('#money').val();
+	var fangshi=$('.name1 ul li.on').find("input").val();
+	var dk="{$store.arrive_jifeng}";
+
+  if (getCookie('user_id') == '') {
+    layer.confirm('您还没有登陆', {btn: ['去登陆','再看看'],title:"提示"}, 
+      function(){layer.msg('正在为你跳转',{time:1000,},function(){window.location.href = "{:U('Mobile/User/login')}";});},
+      function(){layer.msg('登陆后：方可使用快捷支付',{time:2000, });});
+    return false;                   	
+  }
+
+ 
+  if (getCookie('user_id') == '{$store.user_id}') {
+		layer.msg('您不可在自己店铺中使用快捷支付',{time:2000});
+		$("#money").focus();
+		$(".btn_big1").attr('disabled',false);
+		return false;                	
+  }
+
+
+	if (money<=0){
+		layer.msg('请输入正确支付金额',{time:2000});
+		$("#money").focus();
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+
+	if (fangshi!='1' && fangshi!='2'){
+		layer.msg('请先选择支付方式',{time:2000});	
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+	
+	if (fangshi=='2' && dk=="0"){
+		layer.msg('当前不允许使用{:tpCache('distribut.jifeng_name')}抵扣',{time:2000});	
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+	
+
+$.post('', {money: money,fangshi:fangshi,store_id:{$store.store_id}},
+              function(res) {
+				  //console.log(res);
+                    if (res.status == 1) {
+						layer.msg(res.info,{icon:1,time:2000,},function(){window.location.href =res.url;});
+                    } else {
+						layer.msg(res.info,{icon:2,time:2000});	
+						$("#money").focus();
+						$(".btn_big1").attr('disabled',false);
+                    }
+            });
+	
+
+	return false;
+}
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+.login-img{
+    width: 50%;
+    overflow: hidden;
+    padding: 2px;
+    margin: 3rem auto;
+}
+.login-img img{
+    width: 100%;
+    border-radius: 50%;
+}
+.weui-cells {
+		margin: 0 auto;
+    width: 80%;
+    background: none;
+}
+.weui-cells:before {
+    border-top: none;
+    height: 0;
+    color: #fff;
+}
+.weui-cells .weui-input::-webkit-input-placeholder{
+	 color: #c4deea;
+	
+}
+.login-btn{
+    padding: 4rem 0;
+		margin: 0 auto;
+    width: 80%;
+    background: none;
+}

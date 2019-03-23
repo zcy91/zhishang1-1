@@ -1,0 +1,85 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+  <include file="Public/breadcrumb"/>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-list"></i>&nbsp;奖金池规则设置</h3>
+        </div>
+        <div class="panel-body">    
+		<div class="navbar navbar-default">
+        
+            <div class="row navbar-form" style="float:right; width:auto">
+                <button type="submit" onclick="location.href='{:U('Admin/Detail/bonusaddEditNav')}'"  class="btn btn-primary pull-right"><i class="fa fa-plus"></i>新增规则</button>
+            </div>
+            <div class="row navbar-form" style="float:left; width:auto;line-height:35px; color:#f00">
+              注意：一定要设置排序,越小越靠前
+            </div>
+            
+          </div>
+                   
+                        
+          <div id="ajax_return"> 
+                 
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="sorting text-center">名称</th>
+                                <th class="sorting text-center">{:tpCache('distribut.jifeng_name')}池</th> 
+                                <th class="sorting text-center">奖励比例</th>                                 
+                                <th class="sorting text-center">显示</th>
+                                <th class="sorting text-center">达标</th>
+                                <th class="sorting text-center">排序</th>  
+                                <th class="sorting text-center">备注</th>  
+                                <th class="sorting text-center">记录</th>                             
+                                <th class="sorting text-center">操作</th>                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="bonus_ruleList" id="list">
+                                <tr>
+                                    <td class="text-left">{$list.name}</td> 
+                                    <td class="text-left">{$list.jifeng}</td> 
+                                    <td class="text-left">{$list.bili}%</td>   
+                                                                    
+                                    <td class="text-center">
+                                        <img width="20" height="20" src="__PUBLIC__/images/<if condition='$list[is_show] eq 1'>yes.png<else />cancel.png</if>" onclick="changeTableVal('bonus_rule','id','{$list.id}','is_show',this)"/>
+                                    </td>
+                                    <td class="text-center">                                    
+                                        <img width="20" height="20" src="__PUBLIC__/images/<if condition='$list[is_new] eq 1'>yes.png<else />cancel.png</if>" onclick="changeTableVal('bonus_rule','id','{$list.id}','is_new',this)"/>                                                      
+                                    </td>
+                                    <td class="sorting text-center">
+                                    <input type="text" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onchange="updateSort('bonus_rule','id','{$list.id}','sort',this)"  size="4"  value="{$list.sort}" />
+                                    </td>  
+                                    <td class="text-left">{$list.bz|jifeng_replace}</td>   
+                                    <td class="text-left">{$list.recording|jifeng_replace}</td>                                                                    
+                                    <td class="text-right">
+           
+                                        <a href="{:U('Admin/Detail/bonusaddEditNav',array('id'=>$list['id']))}" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+                                        <a href="javascript:del_fun('{:U('Detail/bonus_ruledelNav',array('id'=>$list['id']))}');" id="button-delete6" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="删除"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                
+                <div class="row">
+                    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$show}</div>
+                </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row --> 
+  </section>
+  <!-- /.content --> 
+</div>
+<!-- /.content-wrapper -->
+</body>
+</html>

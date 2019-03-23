@@ -1,0 +1,74 @@
+<include file="Public/bottm_top"/>
+</head>
+<body style=" background:#F5F5F5">
+<header>
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">
+         	快捷支付
+          </div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+</header>
+<include file="Public/menu"/>
+<div class="about_top">
+	<dl>
+		<dt><img src="{$store.store_logo|default='__STATIC__/images/v-shop/logo.png'}"></dt>
+		<dd><span>{$store.store_name}</span>
+		<em>初级店铺</em>
+		<em>商品数量：{$total_goods}</em>
+		</dd>
+		<p>
+        <if condition="$scdp eq 1">
+         <a  data-id="{$store['store_id']}"  href="javascript:;" style="background:#090">已收藏</a>
+        <else/>
+         <a id="favoriteStore" data-id="{$store['store_id']}"  href="javascript:;">收藏</a>
+        </if>
+        </p>
+	</dl>
+</div>
+<div class="about_main">
+	<dl style="text-align:center"><img src="__STATIC__/images/timg.jpg"></dl>
+	<dl>
+	<dt>交易店铺：</dt>
+	 <dd class="red">{$store.store_name}</dd>
+	</dl>
+	<dl>
+	<dt>交易单号：</dt>
+	<dd>{$log_list.order_sn}</dd>
+	</dl>
+	<dl>
+	<dt>交易时间：</dt>
+	<dd>{$log_list.change_time}</dd>
+	</dl>
+	<dl>
+	<dt>支付帐号：</dt>
+	<dd>{$log_list.user_id|about_xin='users','user_id='.###,'mobile','mobile'}</dd>
+	</dl>
+	<dl>
+	<dt>总付金额：</dt>
+	<dd>{$log_list.yubei_money}</dd>
+	</dl>
+	<dl>
+	<dt>实付金额：</dt>
+	<dd><?php echo $log_list["money"]*-1?></dd>
+	</dl>
+    <dl>
+	<dt>赠送{:tpCache('distribut.jifeng_name')}：</dt>
+	<dd>{$zs_jifeng}</dd>
+	</dl>
+    <dl>
+	<dt>{:tpCache('distribut.jifeng_name')}抵扣：</dt>
+	<dd>{$dk_jifeng}</dd>
+	</dl>
+</div>
+<include file="Public/bottm_nav"/>
+
+</body>
+</html>

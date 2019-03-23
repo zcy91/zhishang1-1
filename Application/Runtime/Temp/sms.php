@@ -1,0 +1,1 @@
+a:7:{s:10:"sms_appkey";s:10:"15555260_1";s:13:"sms_secretKey";s:8:"htxlsfis";s:11:"sms_product";s:15:"多用户商城";s:16:"sms_templateCode";s:0:"";s:16:"regis_sms_enable";s:1:"1";s:12:"sms_time_out";s:2:"60";s:7:"sms_url";s:52:"http://sms.smsyun.cc:9012/servlet/UserServiceAPIUTF8";}

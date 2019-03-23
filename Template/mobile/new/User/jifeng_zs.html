@@ -1,0 +1,103 @@
+<include file="Public/header"/>
+<body>
+<header>
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">{:tpCache('distribut.jifeng_name')}转赠</div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+</header>
+<include file="Public/menu"/>
+<div id="tbh5v0">
+    <div class="Personal">
+        <div id="tbh5v0">
+            <div class="innercontent1">
+                <form method="post" id="edit_profile" onSubmit="return checkinfo()">
+                    <div class="name"><span>当前帐号</span>
+                        <input type="text"  value="{$user.mobile}" placeholder="*帐号" class="c-f-text" disabled >
+                    </div>
+                    <div class="name">
+                       <span>拥有{:tpCache('distribut.jifeng_name')}</span>
+                            <input  value="{$user.pay_points}"  placeholder="*帐户拥有{:tpCache('distribut.hot_jifeng_name')}" class="c-f-text" disabled style="width:15%; margin-right:15px"/>
+                            <i style="color:#f00">(注：一旦操将不可撤销)</i>
+                    </div>
+                    <div class="name" style="color:#f00">
+                       <span>接受帐号</span>
+                            <input name="user"   placeholder="*&nbsp;对方手机号码" class="c-f-text"  style=" width:70%;border:#CCC solid 1px; font-size:14px; padding:5px 0px; text-indent:5px" onKeyUp="value=this.value.replace(/\D+/g,'')" required autocomplete="off"/>
+                    </div>
+                    <div class="name">
+                       <span>赠送{:tpCache('distribut.jifeng_name')}</span>
+                            <input name="pay_points"   placeholder="*&nbsp;转赠{:tpCache('distribut.hot_jifeng_name')}数量" class="c-f-text"  style=" width:70%;border:#CCC solid 1px; font-size:14px; padding:5px 0px; text-indent:5px" onKeyUp="value=this.value.replace(/\D+/g,'')" required autocomplete="off"/>
+                    </div>
+                    
+                    
+                    <div class="field submit-btn">
+                    <if condition="$user['pay_points'] gt 0 ">
+                        <input type="submit" value="确认转赠" class="btn_big1"  style="background:#36F"/>
+                    <else/>
+                         <input type="submit" value="{:tpCache('distribut.hot_jifeng_name')}余额不足" class="btn_big1" style="background:#ccc;" disabled/>
+                    </if>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+function checkinfo(){
+	$(".btn_big1").attr('disabled',true);
+	var pay_points=$(" input[ name='pay_points' ] ").val();
+	var user=$(" input[ name='user' ] ").val();
+	if (<?php echo tpCache('distribut.sys_jifeng_zs');?>!=1){
+		layer.open({content:'平台已关闭{:tpCache('distribut.hot_jifeng_name')}转赠功能',time:2});	
+		$(" input[ name='pay_points' ] ").focus();
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+	
+	if (user==''){
+		layer.open({content:'请输入你要转赠的帐号',time:2});	
+		$(" input[ name='pay_points' ] ").focus();
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+	
+	if (pay_points=='' || pay_points<=0){
+		layer.open({content:'请输入你要转赠的{:tpCache('distribut.hot_jifeng_name')}',time:2});	
+		$(" input[ name='pay_points' ] ").focus();
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+
+	if (pay_points>{$user.pay_points}){
+		layer.open({content:'您最多可赠送{:tpCache('distribut.hot_jifeng_name')}{$user.pay_points}',time:2});	
+		$(" input[ name='pay_points' ] ").focus();
+		$(".btn_big1").attr('disabled',false);
+		return false;
+	}
+$.post('/index.php?s=/Mobile/User/jifeng_zs.html', {pay_points: pay_points,user:user},
+              function(res) {
+			        //console.log(res);
+                    if (res.code == 1) {
+                        layer.open({content: res.msg, time: 2});
+						location.reload();
+                    } else {
+                        layer.open({content: res.msg, time: 2});
+						$(" input[ name='pay_points' ] ").focus();
+						$(".btn_big1").attr('disabled',false);
+                    }
+               });
+	
+
+	return false;
+}
+
+</script></body>
+</html>

@@ -1,0 +1,13 @@
+<script type="text/javascript" src="__STATIC__/js/mobile.js" ></script>
+<div class="goods_nav hid" id="menu">
+      <div class="Triangle">
+        <h2></h2>
+      </div>
+      <ul>
+      <tpshop sql="SELECT * FROM `__PREFIX__wapnavigation` where is_show = 1 and lei=0 ORDER BY `sort` asc" key="k" item='v'>
+			<li>
+				<a href="{$v[url]}"  <if condition='$v.is_new eq 1'>target="_blank"</if>><span class="menu1" style="background:url({$v[img]}) no-repeat 50% 80%; background-size:auto 15px; margin-right:5px"></span><i>{$v[name]}</i></a>
+			</li>
+      </tpshop> 
+   </ul>
+ </div> 

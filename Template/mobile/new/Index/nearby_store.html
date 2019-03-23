@@ -1,0 +1,181 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>首页-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/index.css"/>
+    <link rel="stylesheet" href="__STATIC__/css/stores.css">
+    <link rel="stylesheet" href="__STATIC__/css/public.css">
+<script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__STATIC__/js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery.json.js"></script>
+<script type="text/javascript" src="__STATIC__/js/touchslider.dev.js"></script>
+<script type="text/javascript" src="__STATIC__/js/layer.js" ></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/mobile_common.js"></script>
+</head>
+<body style=" background:#F5F5F5;">
+
+
+<header>
+    <div class="tab_nav">
+        <div class="header">
+            <div class="h-left"><a class="sb-back" href="/Mobile/index/index" title="返回"></a></div>
+            <div class="h-mid">附近商家</div>
+            <div style="display: inline-block; position: absolute; right: 4rem;top: 1rem; "><a href="/mobile/index/againLocation" style="color: #fff;font-size: 14px">重新定位</a></div>
+            <div class="h-right">
+                <aside class="top_bar">
+                    <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a
+                            href="javascript:;"></a></div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+ <!-- <div id="pop_up" style="display: none;">
+    <div  style=" position: fixed;background: rgba(0,0,0,0.6);  height:100%; width: 100%;;z-index: 2;color: #fff;display: flex;flex-direction:column;">
+
+        <div style="height: 10%; text-align: right;margin-top: 15px;margin-right: 20px;" id="nav_tc">
+            <span><img src="__STATIC__/images/tuichu/tuichu1.png" style="width: 40px;"/></span>
+        </div>
+        <div>
+            <iframe  width="100%" height="350"  style="border:none; background: #fff; " src="" id="frame">
+
+            </iframe>
+        </div>
+        <div style="padding-left: 20px;margin-top: 20px;padding-top: 10px;opacity: 0.5; line-height: 30px;text-align: left;background: rgba(0,0,0,0.7);color: #fff;">
+            <p><span style="font-size: 16px;font-weight:bold;">店  铺 ：</span> <span id="shop"></span></p>
+            <p><span style="font-size: 16px;font-weight:bold;">所在地 ：</span> <span id="address"></span></p>
+        </div>
+    </div>
+  </div>-->
+</header>
+<include file="Public/menu"/>
+
+
+<div id="store_list">
+
+</div>
+
+
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hWvZskNqtgscOPrf4T4AhKhkVVuuRC7v"></script>-->
+<script type="text/javascript">
+    window.addEventListener("scroll",function(e){
+        localStorage.setItem("shopListAjaxScroll",window.pageYOffset);
+    });
+
+    $(function () {
+
+
+
+        recoverstate();
+       //getStreetList();
+
+       $("#nav_tc").click(function(){
+          $("#pop_up").css('display','none');
+          $("#frame").html("");
+       });
+        
+
+    });
+
+    var page = 1;//页数
+    var cat_id = '';//店铺分类id
+    var store_key='{$store_key}';
+	var lng_lat="{:session('lng_lat')}";
+
+    function getStreetList() {
+		if(lng_lat){
+         $('.get_more').show();
+        $.ajax({
+            type: "get",
+            url: "/index.php?m=Mobile&c=Index&a=ajaxstoreList&p=" + page + "&sc_id=" + cat_id + "&key=" + store_key ,
+            dataType: 'html',
+            success: function (data) {
+            //console.log(data);
+                if (data) {
+				   var Cts = data; 
+                   if(Cts.indexOf("未找到更多店铺") >= 0 ) { 
+				    $("#store_list").append(data);
+                    $('.get_more').hide();
+                    $('#getmore').remove();
+                   }else{
+
+                       localStorage.setItem("shopListAjax",(localStorage.getItem("shopListAjax") || "") +data);
+
+
+                    $("#store_list").append(data);
+                    page++;
+                       localStorage.setItem("shopListAjaxPage",page);
+                    $('.get_more').hide();
+				   }
+                } else {
+                    $('.get_more').hide();
+                    $('#getmore').remove();
+                }
+            }
+        });
+	   }else{
+		layer.open({content:'请先允许系统获取定位信息',time:2,
+		          //end:function(){window.location.replace("Mobile/index/dingwei/lng_lat/"+lng_lat);}
+		          end:function(){window.location.replace("mobile/index/dingwei/lng_lat/"+lng_lat);}
+		});
+	  }
+		
+    }
+
+    function recoverstate() {
+        //其它页面进来的
+        if(localStorage.getItem("isNavBack")==null){
+            localStorage.removeItem("shopListAjax");
+            localStorage.removeItem("shopListAjaxPage");
+            localStorage.removeItem("shopListAjaxScroll");
+            getStreetList();
+
+
+        }
+        //导航页面回退
+        else {
+            var recdata=localStorage.getItem("shopListAjax");
+            var pagec=localStorage.getItem("shopListAjaxPage");
+            var shopListAjaxScroll= localStorage.getItem("shopListAjaxScroll");
+            page=pagec;
+            $("#store_list").append(recdata);
+            $('.get_more').hide();
+            $('html,body').animate({scrollTop:shopListAjaxScroll},'slow');
+            localStorage.removeItem("isNavBack")
+        }
+    }
+
+</script>
+<script>
+    var state = {
+        title: "title",
+        url: "#"
+    };
+    window.history.pushState(state, "title", "#");
+    window.addEventListener("popstate", function(e) {
+        window.location.href="/Mobile/index/index";
+    }, false);
+</script>
+<div class="floor_body2">
+    <div id="J_ItemList">
+        <ul class="product single_item info">
+        </ul>
+        <a href="javascript:;" class="get_more" style="text-align:center; display:block;">
+            <img src='__STATIC__/images/category/loader.gif' width="12" height="12"> </a>
+    </div>
+    <div id="getmore" style="font-size:.24rem;text-align: center;color:#888;padding:.25rem .24rem .4rem;">
+        <a href="javascript:void(0)" onClick="getStreetList()">点击加载更多</a>
+    </div>
+</div>
+<div style="height:100px; line-height:50px; clear:both;"></div>
+<include file="Public/footer"/>
+<include file="Public/footer_nav"/>
+
+</body>
+</html>

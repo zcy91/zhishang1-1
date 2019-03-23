@@ -1,0 +1,88 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+	<include file="Public/breadcrumb"/>
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	             <div class="box-header">
+	               	<nav class="navbar navbar-default">	     
+				        <div class="collapse navbar-collapse">
+				          <form class="navbar-form form-inline" action="{:U('merchant/merchant_list')}" method="post">
+				            <div class="form-group" style="width:30%">
+				              <input type="text" name="merchant_name" class="form-control" placeholder="请输线下店铺名称/或名员编号" style="width:100%" >
+				            </div>
+				            <button type="submit" class="btn btn-primary">查询</button>	          
+				          </form>
+				      	</div>
+	    			</nav>
+    			
+	             </div>
+	             <div class="box-body">
+	           	 <div class="row">
+	            	<div class="col-sm-12">
+		              <table id="list-table" class="table table-bordered table-striped dataTable">
+		                 <thead>
+		                   <tr role="row">
+                               <th>店铺标志</th>
+                               <th>店铺名称</th>
+                               <th>会员账号</th>
+                               <th>联系人</th>
+                               <th>电话</th>
+                               <th>地址</th>
+                               <th>赠送</th>
+                               <th>抵扣</th>
+			                   <th>展示</th>
+                               <th>状态</th>
+		                  	   <th>操作</th>
+		                   </tr>
+		                 </thead>
+						<tbody>
+                          <foreach name="list" item="vo" key="k" >
+                             <tr role="row"> 
+                             <td><img width="30" height="30" src="{$vo.pic}"  onerror="this.src='__PUBLIC__/images/bg-upload.png'"/></td>   
+                             <td>{$vo.title}</td>
+                             <td>{$vo.user_id}</td>
+                             <td>{$vo.name}</td>   
+                             <td>{$vo.tell}</td>  
+                             <td>{$vo.adders}</td>
+                             <td>{$vo.gift_jifeng}%</td>
+                             <td>{$vo.arrive_jifeng}%</td>   
+                             <td><img width="20" height="20" src="__PUBLIC__/images/<if condition='$vo[is_show] eq 1'>yes.png<else />cancel.png</if>" onclick="changeTableVal('merchant','id','{$vo.id}','is_show',this)"/></td>
+                             <td>
+<switch name="vo.is_review">
+<case value="1"><span style="color:#F00">申请中</span></case>
+<case value="2"><span style="color:#F00">未通过</span></case>
+<case value="3"><span style="color:#090">展示中</span></case>
+</switch>
+                             </td>
+                             <td>
+		                      <a class="btn btn-primary" href="{:U('merchant/merchant_edit',array('merchant_id'=>$vo['id']))}"><i class="fa fa-pencil"></i></a>
+		                      <a class="btn btn-danger" onclick="delfunc(this)" data-url="{:U('merchant/merchant_del')}" data-id="{$vo.id}"><i class="fa fa-trash-o"></i></a>
+				     		</td>
+		                   </tr>
+		                  </foreach>
+		                   </tbody>
+		                 <tfoot>
+		                 
+		                 </tfoot>
+		               </table>
+	               </div>
+	          </div>
+              <div class="row">
+              	    <div class="col-sm-6 text-left">
+              	    	<button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+              	    </div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+	          </div>
+	        </div>
+       	</div>
+       </div>
+   </section>
+<script>
+
+</script>
+</div>
+</body>
+</html>

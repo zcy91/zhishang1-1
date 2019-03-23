@@ -1,0 +1,103 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+  <include file="Public/breadcrumb"/>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-list"></i>&nbsp;会员明细</h3>
+        </div>
+        <div class="panel-body">    
+<div class="box-header">
+	                <nav class="navbar navbar-default">	     
+				        <div class="collapse navbar-collapse">
+				          <form class="navbar-form form-inline" action="{:U('index')}" method="post">
+				            <div class="form-group">
+				              	<input type="text" name="key" class="form-control" placeholder="请输入会员编号或订单号" value="{:I('key')}">
+				            </div>
+				            <div class="form-group">
+				              <select name="types" class="form-control" style="width:200px;">
+				              	<option value=""   <if condition="I('types') eq ''">selected</if>>所有帐户</option>
+                                <option value="1"  <if condition="I('types') eq '1'">selected</if>>余额</option>
+                                <option value="2"  <if condition="I('types') eq '2'">selected</if>>{:tpCache('distribut.hot_jifeng_name')}</option>
+                                <option value="3"  <if condition="I('types') eq '3'">selected</if>>{:tpCache('distribut.cold_jifeng_name')}</option>
+                                <option value="4"  <if condition="I('types') eq '4'">selected</if>>待激活</option>
+                                <option value="5"  <if condition="I('types') eq '5'">selected</if>>{:tpCache('distribut.equity_name')}</option>
+				              </select>
+				            </div>
+
+				            <button type="submit" class="btn btn-default">搜索</button>
+				            <div class="form-group pull-right" style="line-height:35px">
+                            <style>
+                              .desc{ margin-right:10px; padding:5px 8px; border-radius:5px; background:#ccc; font-size:12px; color:#FFF; cursor:pointer}
+							  .on{ background:#060; color:#fff}
+                            </style>
+                                快捷操作：
+                                <span onclick="location.href='{:U('index',array('types'=>I('types'),'key'=>I('key')))}'" class="desc <if condition="I('desc') eq ''"> on</if>">全部</span> 
+                                
+                                <volist name="leixing" id="list">
+				              	<span onclick="location.href='{:U('index',array('types'=>I('types'),'key'=>I('key'),'desc'=>$list))}'" class="desc <if condition="I('desc') eq $list"> on</if>">{$list}</span> 
+                                </volist>   
+                                
+				            </div>		          
+				          </form>		
+				      	</div>
+	    			</nav>               
+	             </div>
+                        
+          <div id="ajax_return">                  
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="sorting text-center">编号</th>
+                                <th class="sorting text-center">用户</th>
+                                <th class="sorting text-center">数量</th> 
+                                <th class="sorting text-center">时间</th>  
+                                <th class="sorting text-center">项目</th>   
+                                <th class="sorting text-center">所属</th>    
+                                <th class="sorting text-center">备注</th>                           
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="List" id="list">
+                                <tr>
+                                    <td class="text-left">{$list.log_id}</td> 
+                                    <td class="text-left"><if condition="$list.user_id neq 0">{$list.user_id|about_xin='users','user_id='.###,'nickname','nickname'}|{$list.user_id|about_xin='users','user_id='.###,'mobile','mobile'}<else/><span style="color:#F00">平台</span></if></td> 
+                                    <td class="text-left">{$list.money}</td> 
+                                    <td class="text-left">{$list.change_time|date="Y-m-d h:i:s",###}</td>  
+                                    <td class="text-left">{$list.desc|jifeng_replace}</td> 
+                                    <td class="text-left">{$list.types|function_types}</td>   
+                                    <td class="text-left"><small>{$list.order_sn|jifeng_replace}</small>
+                          <if condition="$list[money] lt 0 && $list['desc'] eq '快捷支付'">
+                            <?php $store_info=about_xin('store','user_id='.$list['order_id'],'store_name,store_id')?>
+                            <small style="color:#0C0">商家店铺:{$store_info.store_name}<a style="color:#f00; padding-left:10px"  target="_blank" href="{:U("Mobile/Store/fast_info",array('t_no'=>$list['order_sn'],'store_id'=>$store_info['store_id'],'u_id'=>$list['user_id']))}" >查看</a></small>
+                          </if>
+                          <if condition="$list[money] gt 0 && $list['desc'] eq '快捷支付'">
+                          <?php $store_info=about_xin('store','user_id='.$list['user_id'],'store_name,store_id')?>
+                            <small style="color:#0C0">支付会员:{$list.order_id|about_xin='users','user_id='.###,'mobile','mobile'}<a style="color:#f00; padding-left:10px"  target="_blank" href="{:U("Mobile/Store/fast_info",array('t_no'=>$list['order_sn'],'store_id'=>$store_info['store_id'],'u_id'=>$list['order_id']))}">查看</a></small>
+                          </if>
+                                </td>                         
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                
+              <div class="row">
+              	    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row --> 
+  </section>
+  <!-- /.content --> 
+</div>
+<!-- /.content-wrapper -->
+</body>
+</html>

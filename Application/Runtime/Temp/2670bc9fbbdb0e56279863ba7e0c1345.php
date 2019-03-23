@@ -1,0 +1,3 @@
+<?php
+//000000000001a:4:{i:2;a:4:{s:11:"position_id";s:1:"2";s:13:"position_name";s:37:"手机首页banner广告轮播980*400";s:8:"ad_width";s:3:"980";s:9:"ad_height";s:3:"400";}i:3;a:4:{s:11:"position_id";s:1:"3";s:13:"position_name";s:24:"手机产品分类页面";s:8:"ad_width";s:1:"0";s:9:"ad_height";s:1:"0";}i:51319;a:4:{s:11:"position_id";s:5:"51319";s:13:"position_name";s:24:"1+1平台公测开始啦";s:8:"ad_width";s:1:"0";s:9:"ad_height";s:1:"0";}i:1;a:4:{s:11:"position_id";s:1:"1";s:13:"position_name";s:28:"手机端首页通栏广告1";s:8:"ad_width";s:1:"0";s:9:"ad_height";s:1:"0";}}
+?>

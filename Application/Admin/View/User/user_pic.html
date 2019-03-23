@@ -1,0 +1,155 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+  <include file="Public/breadcrumb"/>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 用户列表</h3>
+                </div>
+                
+                <div class="panel-body">
+                    <div class="navbar navbar-default">
+                                <div class="form-group" style="padding:10px">
+      <div class="input-group" style="float:left;">
+       <select name="ceng" size="1" id="ceng"   class="form-control" style="width:200px;"  onChange="location.href=(this.options[this.selectedIndex].value)">
+        <option value="<?php echo U('user/user_pic','ceng=1&key='.$key);?>" <eq name='ceng' value='1'>selected</eq>>查看下一层</option>
+        <option value="<?php echo U('user/user_pic','ceng=2&key='.$key);?>" <eq name='ceng' value='2'>selected</eq>>查看下二层</option>
+        <option value="<?php echo U('user/user_pic','ceng=3&key='.$key);?>" <eq name='ceng' value='3'>selected</eq>>查看下三层</option>
+        <option value="<?php echo U('user/user_pic','ceng=4&key='.$key);?>" <eq name='ceng' value='4'>selected</eq>>查看下四层</option>
+        <option value="<?php echo U('user/user_pic','ceng=5&key='.$key);?>" <eq name='ceng' value='5'>selected</eq>>查看下五层</option>
+        <option value="<?php echo U('user/user_pic','ceng=10&key='.$key);?>" <eq name='ceng' value='10'>selected</eq>>查看下十层</option>
+        <option value="<?php echo U('user/user_pic','ceng=20&key='.$key);?>" <eq name='ceng' value='20'>selected</eq>>查看下二十层</option>
+        <option value="<?php echo U('user/user_pic','ceng=30&key='.$key);?>" <eq name='ceng' value='30'>selected</eq>>查看下三十层</option>
+       </select>
+      </div>
+<div class="input-group" style="float:left; margin-left:8px">
+  <form action="<?php echo U('user/user_pic');?>"  class="navbar-form form-inline" method="post"   style="padding:0px; margin:0px">
+     <input name="ceng" type="hidden" value="{$ceng}">
+     <input type="text" name="key" value="{$key}" placeholder="会员编号或手机号码"  class="form-control">&nbsp; 
+     <button type="submit"  class="btn btn-primary pull-right"><i class="fa fa-search"></i> 筛选</button>
+  </form>
+</div>
+<div class="input-group" style="float:right;"><a href="{:U('User/add_user')}" class="btn btn-info pull-right">添加会员</a></div>
+           </div>
+</div>
+<style>
+
+#content .bloc .content ul {
+	list-style: none; padding:0px; margin:0px; padding-top:20px;
+}
+
+.tree ul {
+	padding-top: 20px; position: relative;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+.tree li {
+	float: left; text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 5px 0 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before, .tree li::after{
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 1px solid #ccc;
+	width: 50%; height: 20px;
+}
+.tree li::after{
+	right: auto; left: 50%;
+	border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+	display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child{ padding-top: 0;}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+.tree li:first-child::before, .tree li:last-child::after{
+	border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before{
+	border-right: 1px solid #ccc;
+	border-radius: 0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after{
+	border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 1px solid #ccc;
+	width: 0; height: 20px;
+}
+
+.tree li a{
+	display:block; height:90px; line-height:20px;
+	border: 1px solid #ccc;
+	padding: 5px 5px;
+	text-decoration: none;
+	color: #666;
+	font-family: arial, verdana, tahoma;
+	font-size: 12px;
+	display: inline-block;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s; cursor:pointer; overflow:hidden}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover, .tree li a:hover+ul li a {
+	background: #c8e4f8; color: #000; border: 1px solid #94a0b4;text-decoration:underline;}
+/*Connector styles on hover*/
+.tree li a:hover+ul li::after, 
+.tree li a:hover+ul li::before, 
+.tree li a:hover+ul::before, 
+.tree li a:hover+ul ul::before{
+	border-color:  #94a0b4;text-decoration:underline}
+</style>
+
+<div id="content" class="white">
+  <div class="bloc">
+    <div class="content" style="min-height:600px;overflow:auto">
+    <div class="tree"  style="margin-bottom:15px; width:1000000px;">{$moue_list}</div> 
+  </div>
+</div>
+</div>
+                </div>
+            </div>
+        </div>        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+
+</body>
+</html>
