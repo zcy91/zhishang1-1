@@ -66,7 +66,8 @@
 								<input id="zphone" type="button" rel="mobile" value="获取手机验证码 " onClick="sendcode(this)" class="zphone" style=" color:#FFF" onkeyup="value=this.value.replace(/\D+/g,'')">
                                </div>
 						</div>
-</if>          
+</if>
+					<input name="vension" value="" id="vension" type="hidden">
 						<input type="submit" id="btn_submit" name="Submit" class="btn_big1" value="注 册" />
 			</form>
 			</div>
@@ -102,7 +103,8 @@
                                    <div class="codePhoto">
 									<input id="zemail" type="button" rel="email" value="获取邮箱验证码 " class="zphone" onClick="sendcode(this)" style=" color:#FFF">
                                   </div>
-						</div>													
+						</div>
+
 						<input type="checkbox" style="display: none" name="agreement" value="1" checked="checked" required />
 						<input type="submit" id="btn_submit" name="Submit" class="btn_big1" value="注 册" />
 				</form>
@@ -116,13 +118,16 @@
         var u = navigator.userAgent;
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         if(isiOS){
-            alert("IOS")
+           if(isiosapp()){
+               $("#vension").val("ios_app");
+		   }else{
+               $("#vension").val("ios_web");
+		   }
 		}else{
-            var ua = navigator.userAgent.toLowerCase();
-            if(ua.indexOf('vrseen') > -1){
-               // alert("android web")
+            if(u.indexOf('Android') != -1){
+                $("#vension").val("android_app");
 			}else{
-               // alert(ua.indexOf('vrseen'))
+                $("#vension").val("android_web");
 			}
 		}
     }

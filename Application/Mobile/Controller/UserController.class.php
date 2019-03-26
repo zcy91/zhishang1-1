@@ -138,6 +138,15 @@ class UserController extends MobileBaseController{
         }
         exit(json_encode($res));
     }
+    function getallheaders() {
+        $headers = [];
+        foreach ($_SERVER as $name => $value) {
+            if (substr($name, 0, 5) == 'HTTP_') {
+                $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+            }
+        }
+        return $headers;
+    }
 
     /**
      *  注册
@@ -158,6 +167,7 @@ class UserController extends MobileBaseController{
             $username = I('post.username', '');
             $password = I('post.password', '');
             $password2 = I('post.password2', '');
+            //var_dump(I('post.vension'));die;
             //是否开启注册验证码机制
             if (check_mobile($username) && tpCache('sms.regis_sms_enable')) {
                 $code = I('post.mobile_code', '');
@@ -179,7 +189,11 @@ class UserController extends MobileBaseController{
             setcookie('is_distribut', $data['result']['is_distribut'], null, '/');
             $cartLogic = new \Home\Logic\CartLogic();
             $cartLogic->login_cart_handle($this->session_id, $data['result']['user_id']);  //用户登录后 需要对购物车 一些操作
-            $this->success($data['msg']);
+
+            if(I('post.vension') == 'ios_web' || I('post.vension') == 'android_web'){
+                $this->success($data['msg'],'https://www.pgyer.com/F8pY');
+            }else
+            $this->success($data['msg'],'/');
             exit;
         }
         $this->assign('regis_sms_enable', tpCache('sms.regis_sms_enable')); // 注册启用短信：
@@ -187,6 +201,9 @@ class UserController extends MobileBaseController{
         $this->display();
     }
 
+    public function code(){
+        $this->display();
+    }
     /*
      * 订单列表
      */
@@ -1233,6 +1250,10 @@ class UserController extends MobileBaseController{
         if (IS_POST) {
             $this->verifyHandle('merchant');
             $data = I('post.');
+            $data['store_name'] = $m_info['store_name'];
+            $data['store_user_name'] = $m_info['store_user_name'];
+            $data['store_phone'] = $m_info['store_phone'];
+            $data['store_address'] = $m_info['store_address'];
             $data['user_id'] = $this->user_id;
             $data['addtime'] = time();
 			if($m_info){

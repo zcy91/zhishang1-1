@@ -40,6 +40,7 @@ class IndexController extends BaseController {
             header("Location: ".U('Mobile/Index/index'));
 			exit;
         }else{
+            header("Content-type:text/html;charset=utf-8");
 			echo "<h1 style='line-height:85px;text-align:center; font-size:24px; color:#f00; display:block;width:300px; height:300px; border:#CCC solid 1px; border-radius:10px; background:#efefef;margin:0px auto; position:fixed; left:50%; top:50%; margin:-200px 0px 0px -200px;padding:50px'><img  style='width:80%;' src=\"http://www.liantu.com/api.php?text=http://".$_SERVER ['HTTP_HOST'].'/Mobile'."&bg=ffffff&fg=000000\"/><br/>请使用手机访问!</h1>";
 			exit;
 		 }

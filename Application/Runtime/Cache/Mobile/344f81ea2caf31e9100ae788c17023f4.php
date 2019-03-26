@@ -62,16 +62,16 @@
       <section class="innercontent1">
         <form action="" method="post" name="formMsg" onSubmit="return submitMsg()">
           <div class="field_else">
-          <span>店铺名称：</span><input type="text" name="store_name" id="store_name" placeholder="&nbsp;例：***超市" style="width:70%" value="<?php echo ($m_info["store_name"]); ?>"/>
+          <span>店铺名称：</span><input type="text" name="store_name" id="store_name" placeholder="&nbsp;例：***超市" style="width:70%" value="<?php echo ($m_info["store_name"]); ?>"/ >
           </div>
           <div class="field_else">
-          <span>&nbsp;联&nbsp;系&nbsp;人：</span><input type="text" name="store_user_name" id="store_user_name" placeholder="&nbsp;例：李四" style="width:70%" value="<?php echo ($m_info["store_user_name"]); ?>"/>
+          <span>&nbsp;联&nbsp;系&nbsp;人：</span><input type="text" name="store_user_name" id="store_user_name" placeholder="&nbsp;例：李四" style="width:70%" value="<?php echo ($m_info["store_user_name"]); ?>" readonly/>
           </div>
           <div class="field_else">
-          <span>联系电话：</span><input type="text" name="store_phone" id="store_phone" placeholder="&nbsp;电话或手机" style="width:70%" value="<?php echo ($m_info["store_phone"]); ?>"/>
+          <span>联系电话：</span><input type="text" name="store_phone" id="store_phone" placeholder="&nbsp;电话或手机" style="width:70%" value="<?php echo ($m_info["store_phone"]); ?>" readonly/>
           </div>
           <div class="field_else">
-          <span>店铺地址：</span><input type="text" name="store_address" id="store_address" placeholder="&nbsp;店铺地址" style="width:70%" value="<?php echo ($m_info["store_address"]); ?>"/>
+          <span>店铺地址：</span><input type="text" name="store_address" id="store_address" placeholder="&nbsp;店铺地址" style="width:70%" value="<?php echo ($m_info["store_address"]); ?>" readonly/>
           </div>
           <div class="field_else">
              <textarea name="seo_description" id="seo_description" style="height:80px;width:92%" placeholder="店铺描述..."><?php echo ($m_info["seo_description"]); ?></textarea>

@@ -64,7 +64,8 @@
                                <div class="codePhoto">
 								<input id="zphone" type="button" rel="mobile" value="获取手机验证码 " onClick="sendcode(this)" class="zphone" style=" color:#FFF" onkeyup="value=this.value.replace(/\D+/g,'')">
                                </div>
-						</div><?php endif; ?>          
+						</div><?php endif; ?>
+					<input name="vension" value="" id="vension" type="hidden">
 						<input type="submit" id="btn_submit" name="Submit" class="btn_big1" value="注 册" />
 			</form>
 			</div>
@@ -100,7 +101,8 @@
                                    <div class="codePhoto">
 									<input id="zemail" type="button" rel="email" value="获取邮箱验证码 " class="zphone" onClick="sendcode(this)" style=" color:#FFF">
                                   </div>
-						</div>													
+						</div>
+
 						<input type="checkbox" style="display: none" name="agreement" value="1" checked="checked" required />
 						<input type="submit" id="btn_submit" name="Submit" class="btn_big1" value="注 册" />
 				</form>
@@ -113,17 +115,29 @@
     function isIOS(){
         var u = navigator.userAgent;
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        alert(isiOS);
+        if(isiOS){
+           if(isiosapp()){
+               $("#vension").val("ios_app");
+		   }else{
+               $("#vension").val("ios_web");
+		   }
+		}else{
+            if(u.indexOf('Android') != -1){
+                $("#vension").val("android_app");
+			}else{
+                $("#vension").val("android_web");
+			}
+		}
     }
     isIOS();
     function isiosapp() {
         if (/^.+(Mobile\/\w+)\s?$/.test(navigator.userAgent)) {
 // IOS端APP
-			alert('ios app')
+			//alert('ios app')
             return true;
         } else {
 // IOS端浏览器
-			alert("ios web")
+			//alert("ios web")
             return false;
         }
     }
