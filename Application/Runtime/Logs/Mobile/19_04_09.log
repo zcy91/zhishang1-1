@@ -1,0 +1,148 @@
+[ 2019-04-09T15:55:13+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T15:55:49+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+ERR: æ— æ³•åŠ è½½ç¼“å­˜ç±»åž‹:127.0.0.1
+
+[ 2019-04-09T15:57:05+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+NOTIC: [2] array_merge(): Argument #2 is not an array E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php ç¬¬ 30 è¡Œ.
+ERR: ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2019-04-09T15:57:47+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T15:58:30+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T16:07:19+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T16:07:53+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T16:08:07+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T16:15:28+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T16:16:48+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T16:17:57+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T16:20:53+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T16:21:46+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T16:23:40+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T16:27:48+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+
+[ 2019-04-09T16:32:53+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 100 è¡Œ.
+

@@ -1,0 +1,50 @@
+[ 2019-04-04T13:27:29+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+
+[ 2019-04-04T13:27:36+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+
+[ 2019-04-04T13:27:41+08:00 ] 127.0.0.1 /index.php?m=Home&c=Cart&a=header_cart_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' E:\PHPTutorial\WWW\tpshop\Application\Home\Logic\CartLogic.class.php 第 160 行.
+NOTIC: [8] Undefined index: user_id E:\PHPTutorial\WWW\tpshop\Application\Home\Logic\CartLogic.class.php 第 160 行.
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' E:\PHPTutorial\WWW\tpshop\Application\Home\Logic\CartLogic.class.php 第 168 行.
+NOTIC: [8] Undefined variable: exchange_integral E:\PHPTutorial\WWW\tpshop\Application\Home\Logic\CartLogic.class.php 第 192 行.
+INFO: [ view_begin ] --START--
+INFO: Run Home\Behaviors\testBehavior [ RunTime:0.002000s ]
+INFO: [ view_begin ] --END-- [ RunTime:0.002000s ]
+ERR: 模板不存在:./Template/pc/soubao/Cart/header_cart_list.html
+
+[ 2019-04-04T13:44:19+08:00 ] 127.0.0.1 /index.php?m=Home&c=Cart&a=header_cart_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' E:\PHPTutorial\WWW\tpshop\Application\Home\Logic\CartLogic.class.php 第 160 行.
+NOTIC: [8] Undefined variable: exchange_integral E:\PHPTutorial\WWW\tpshop\Application\Home\Logic\CartLogic.class.php 第 192 行.
+INFO: [ view_begin ] --START--
+INFO: Run Home\Behaviors\testBehavior [ RunTime:0.002000s ]
+INFO: [ view_begin ] --END-- [ RunTime:0.002000s ]
+ERR: 模板不存在:./Template/pc/soubao/Cart/header_cart_list.html
+

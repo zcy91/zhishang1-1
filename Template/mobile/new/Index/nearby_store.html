@@ -10,6 +10,10 @@
 <link rel="stylesheet" type="text/css" href="__STATIC__/css/index.css"/>
     <link rel="stylesheet" href="__STATIC__/css/stores.css">
     <link rel="stylesheet" href="__STATIC__/css/public.css">
+    <!--<link type="text/css" rel="stylesheet" href="https://demo.demohuo.top/jquery/23/2336/demo/css/normalize.css">-->
+    <!--<link type="text/css" rel="stylesheet" href="https://demo.demohuo.top/jquery/23/2336/demo/css/font-awesome.min.css">-->
+    <!--<link type="text/css" rel="stylesheet" href="https://demo.demohuo.top/jquery/23/2336/demo/css/demo.css">-->
+    <!--<link type="text/css" rel="stylesheet" href="https://demo.demohuo.top/jquery/23/2336/demo/css/component.css">-->
 <script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
 <script type="text/javascript" src="__STATIC__/js/TouchSlide.1.1.js"></script>
 <script type="text/javascript" src="__STATIC__/js/jquery.json.js"></script>
@@ -18,7 +22,49 @@
 <script src="__PUBLIC__/js/global.js"></script>
 <script src="__PUBLIC__/js/mobile_common.js"></script>
 </head>
-<body style=" background:#F5F5F5;">
+<style>
+    .input__label--juro{
+        height: auto!important;
+    }
+    .form-control{
+        font-size: 1.1rem;
+        border: none;
+        border-bottom:1px solid #666;
+        padding: 0.25rem;
+        margin-top: 0.25rem;
+        background-color: transparent;
+        border-radius: 0;
+        height: 2.5rem;
+        width: 75%;
+        padding: 0;
+        box-shadow: none;
+        outline: none;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+    input {
+        -webkit-appearance: none;
+    }
+    .div {
+        display: inline-block;
+        padding: .3em .5em;
+        background-image: linear-gradient(#ddd, #bbb);
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: .3em;
+        box-shadow: 0 1px white inset;
+        text-align: center;
+        text-shadow: 0 1px 1px black;
+        color:white;
+        font-weight: bold;
+        background-image: linear-gradient(#f5c153, #ea920d);
+    }
+    .div:active{
+        box-shadow: .05em .1em .2em rgba(0,0,0,.6) inset;
+        border-color: rgba(0,0,0,.3);
+        background: #bbb;
+    }
+</style>
+<body style=" background:#F5F5F5;" onkeydown="keyLogin()">
 
 
 <header>
@@ -26,7 +72,7 @@
         <div class="header">
             <div class="h-left"><a class="sb-back" href="/Mobile/index/index" title="返回"></a></div>
             <div class="h-mid">附近商家</div>
-            <div style="display: inline-block; position: absolute; right: 4rem;top: 1rem; "><a href="/mobile/index/againLocation" style="color: #fff;font-size: 14px">重新定位</a></div>
+            <div style="display: inline-block; position: absolute; right: 4rem;top: 0.6rem; "><a href="/mobile/index/againLocation" style="color: #fff;font-size: 14px">重新定位</a></div>
             <div class="h-right">
                 <aside class="top_bar">
                     <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a
@@ -55,15 +101,207 @@
   </div>-->
 </header>
 <include file="Public/menu"/>
+<!--<span class="input input&#45;&#45;juro">-->
+				<!--<input class="input__field input__field&#45;&#45;juro" type="text"  field-name="store_address" require="require" id="address">-->
+				<!--<label class="input__label input__label&#45;&#45;juro" for="address">-->
+					<!--<span class="input__label-content input__label-content&#45;&#45;juro">其他地址</span>-->
+				<!--</label>-->
+    <!--<button onclick="go()">确认</button>-->
+<!--</span>-->
+<div style="display: inline-block;text-align: center;width: 100%;padding: .25rem">
+    <form action="" style="display: inline">
+        <input type="text" class="form-control" field-name="store_address" require="require" id="address"
+               require-empty-tip="详细地址未填写" value="" placeholder="请输入其他地址" onfocus="this.placeholder = ''"  onkeydown="return keyLogin()"/>
+    </form>
 
+    <div class="div" onclick="go()">确认</div>
+</div>
+<input id="value" type="hidden">
 
+<li style="display:none;"><div id="BDMap" style="width:100%;border:1px solid gray;text-align: center;height: 300px;margin-top: .25rem"></div></li>
+<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto;display:none;margin-top: 20px;">onconfirm<br>index = 0<br>myValue = 义乌市</div>
 <div id="store_list">
 
 </div>
+<li class="clear" style="display: none">
+    <label for="" class="user_input_title"><span>*</span>经纬度拾取：</label>
+    <div>
+        <input type="text" class="w_appearance user_input_text lnglat_input" field-name="store_latlng" readonly="readonly" id="val"
+               require="require" require-empty-tip="经纬度未选取">
+        <i id="user_input_latlng_ico" class="user_input_latlng_ico"></i>
+        <span style="display: none">经度<input id="longitude" name="longitude">
+            纬度<input id="latitude" name="latitude"></span>
+    </div>
+</li>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=hWvZskNqtgscOPrf4T4AhKhkVVuuRC7v"></script>
+<!---->
+<script type="text/javascript">
 
+    // $("input").blur(function(){$("keyboard").hide();})
+    // var oForm =  document.getElementsByTagName("form")[0];
+    // oForm.onsubmit = function(){
+    //     $('input').blur();   //防止手机键盘不自动收回
+    //
+    // };
 
+    // 百度地图API功能
+    // 绘制地图
+    $(document).ready(function() {
+        var map = new BMap.Map("BDMap", {enableMapClick: false});
+        // 定位并显示当前地址
+        theLocation();
+        map.enableScrollWheelZoom(); //启用滚轮放大缩小，默认禁用
+        map.enableContinuousZoom(); //启用地图惯性拖拽，默认禁用
+        var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+        var top_left_navigation = new BMap.NavigationControl({type: BMAP_NAVIGATION_CONTROL_SMALL}); //左上角，添加默认缩放平移控件
+        map.addControl(top_left_control);
+        map.addControl(top_left_navigation);
+        var ac = new BMap.Autocomplete( //建立一个自动完成的对象
+            {
+                "input": "address"
+                , "location": map
+            });
+        var c = document.getElementById("address").value;
+        ac.setInputValue(c);
+        ac.addEventListener("onhighlight", function (e) { //鼠标放在下拉列表上的事件
+            var str = "";
+            var _value = e.fromitem.value;
+            var value = "";
+            if (e.fromitem.index > -1) {
+                value = _value.province + _value.city + _value.district + _value.street + _value.business;
+            }
+            str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+            value = "";
+            if (e.toitem.index > -1) {
+                _value = e.toitem.value;
+                value = _value.province + _value.city + _value.district + _value.street + _value.business;
+            }
+            str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+            G("searchResultPanel").innerHTML = str;
+        });
+        var myValue;
+        ac.addEventListener("onconfirm", function (e) { //鼠标点击下拉列表后的事件
+            var _value = e.item.value;
+            myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
+            G("searchResultPanel").innerHTML = "onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+            setPlace();
+        });
+
+        function G(id) {
+            return document.getElementById(id);
+        }
+
+        function setPlace() {
+            map.clearOverlays(); //清除地图上所有覆盖物
+            function myFun() {
+                var pp = local.getResults().getPoi(0).point; //获取第一个智能搜索的结果
+                $("#longitude").val(pp.lng);//设置经纬度
+                $("#latitude").val(pp.lat);
+                var val = pp.lng + ',' + pp.lat;
+                $("#val").val(val);
+                map.centerAndZoom(pp, 18);
+                map.addOverlay(new BMap.Marker(pp)); //添加标注
+            }
+
+            var local = new BMap.LocalSearch(map, { //智能搜索
+                onSearchComplete: myFun
+            });
+            local.search(myValue);
+        }
+
+        // 用经纬度设置地图中心点
+        function theLocation() {
+            if (document.getElementById("longitude").value != "" && document.getElementById("latitude").value != "") {
+                map.clearOverlays();
+                var new_point = new BMap.Point(document.getElementById("longitude").value, document.getElementById("latitude").value);
+                var marker = new BMap.Marker(new_point); // 创建标注
+                map.centerAndZoom(new_point, 15);
+                map.addOverlay(marker); // 将标注添加到地图中
+                map.panTo(new_point);
+            } else {
+                map.centerAndZoom("义乌", 15);
+            }
+        }
+
+        var geoc = new BMap.Geocoder();
+        map.addEventListener("click", function (e) {
+//通过点击百度地图，可以获取到对应的point, 由point的lng、lat属性就可以获取对应的经度纬度
+            var pt = e.point;
+            geoc.getLocation(pt, function (rs) {
+//addressComponents对象可以获取到详细的地址信息
+                var addComp = rs.addressComponents;
+                var site = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+//将对应的HTML元素设置值
+                $("#address").val(site);
+                $("#longitude").val(pt.lng);
+                $("#latitude").val(pt.lat);
+                var val = pt.lng + ',' + pt.lat;
+                $("#val").val(val);
+            });
+        });
+    })
+
+</script>
 <!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hWvZskNqtgscOPrf4T4AhKhkVVuuRC7v"></script>-->
 <script type="text/javascript">
+    function keyLogin() {
+        if (event.keyCode == 13)  //回车键的键值为13
+          go()
+    }
+        function subString(str, len, hasDot) {
+        var newLength = 0;
+        var newStr = "";
+        var chineseRegex = /[^\x00-\xff]/g;
+        var singleChar = "";
+        var strLength = str.replace(chineseRegex, "**").length;
+        for (var i = 0; i < strLength; i++) {
+            singleChar = str.charAt(i).toString();
+            if (singleChar.match(chineseRegex) != null) {
+                newLength += 2;
+            }
+            else {
+                newLength++;
+            }
+            if (newLength > len) {
+                break;
+            }
+            newStr += singleChar;
+        }
+
+        if (hasDot && strLength > len) {
+            newStr += "...";
+        }
+        return newStr;
+    }
+    function go() {
+        var ads = $("#address").val();
+        if(!ads){
+            alert("请填写地址");
+            return false;
+        }
+        ads = subString(ads,12,false);
+            var keyword = document.getElementById("address").value;
+            var localSearch = new BMap.LocalSearch(map);
+            localSearch.setSearchCompleteCallback(function (searchResult) {
+                var poi = searchResult.getPoi(0);
+                document.getElementById("value").value = poi.point.lng + "," + poi.point.lat; //获取经度和纬度，将结果显示在文本框中
+                map.centerAndZoom(poi.point, 13);
+                var address = $("#value").val();
+                layer.open({content:'搜索'+ads+'成功,正在为你跳转',time:2,end:function(){window.location.replace("index.php?s=/Mobile/index/dingwei/lng_lat/"+address);}});
+
+            });
+            localSearch.search(keyword);
+    }
+    function searchByStationName() {
+        var keyword = document.getElementById("address").value;
+        var localSearch = new BMap.LocalSearch(map);
+        localSearch.setSearchCompleteCallback(function (searchResult) {
+            var poi = searchResult.getPoi(0);
+            document.getElementById("value").value = poi.point.lng + "," + poi.point.lat; //获取经度和纬度，将结果显示在文本框中
+            map.centerAndZoom(poi.point, 13);
+        });
+        localSearch.search(keyword);
+    }
     window.addEventListener("scroll",function(e){
         localStorage.setItem("shopListAjaxScroll",window.pageYOffset);
     });

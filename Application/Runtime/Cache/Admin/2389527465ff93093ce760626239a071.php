@@ -327,7 +327,7 @@
                                     <td>分成时间：</td>
                                     <td >下单后，支付成功即返
                                         <select class="form-control" name="date" id="distribut_date"  style="display:none">
-                                                <?php $__FOR_START_9098__=1;$__FOR_END_9098__=31;for($i=$__FOR_START_9098__;$i < $__FOR_END_9098__;$i+=1){ ?><option value="<?php echo ($i); ?>" <?php if($config[date] == $i): ?>selected="selected"<?php endif; ?>><?php echo ($i); ?>天</option><?php } ?>
+                                                <?php $__FOR_START_12447__=1;$__FOR_END_12447__=31;for($i=$__FOR_START_12447__;$i < $__FOR_END_12447__;$i+=1){ ?><option value="<?php echo ($i); ?>" <?php if($config[date] == $i): ?>selected="selected"<?php endif; ?>><?php echo ($i); ?>天</option><?php } ?>
                                         </select>
                                     </td>
                                     <td class="col-sm-7"><!--订单收货确认后多少天可以分成--></td>                                    

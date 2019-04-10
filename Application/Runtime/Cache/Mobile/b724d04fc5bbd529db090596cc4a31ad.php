@@ -17,7 +17,7 @@
 					<a href="<?php echo U('Store/index',array('store_id'=>$store[store_id]));?>" style="float: left;max-width: 73%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><?php echo ($store['store_name']); ?></a>
 
 				</strong>
-              	<p>所在地：<?php echo ($store['province_name']); ?>,<?php echo ($store['city_name']); ?>,<?php echo ($store['district_name']); ?></p>
+              	<p>所在地：<?php echo ($store['store_address']); ?></p>
 
 			</dd>
 		</dl>

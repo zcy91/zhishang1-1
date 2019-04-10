@@ -3,8 +3,38 @@
 namespace Mobile\Controller;
 use Mobile\Model\StoreModel;
 use Admin\Logic\StoreLogic;
+use Think\Cache\Driver\Redis;
+
 class IndexController extends MobileBaseController {
-    public function index(){  
+    public function index(){
+        $redis = new Redis();
+        $result = $redis->connect();
+        $result = $redis->set('test',"11111111111");
+        $value = $redis->get('test');
+        $redis->delete('test');
+        $value = $redis->setnx('test',123);
+//        var_dump($redis->incr("test"));  //递增+1 124
+//        var_dump($redis->decr("test"));  //递减：int(123)
+        $redis->set('test1',"1");
+        $redis->set('test2',"2");
+        $result = $redis->getMultiple(array('test1','test2'));//取得所有指定键的值。如果一个或多个键不存在，该数组中该键的值为假
+//        print_r($result);   //结果：Array ( [0] => 1 [1] => 2 )
+        $redis->delete('test');
+//        var_dump($redis->lpush("test","111"));   //结果：int(1) 由列表头部添加字符串值。如果不存在该键则创建该列表。如果该键存在，而且不是一个列表，返回FALSE。返回长度
+//        var_dump($redis->lpush("test","222"));   //结果：int(2)
+//        var_dump($redis->lpop("test"));  //结果：string(3) "222"  返回和移除列表的第一个元素
+        $redis->delete('test');
+        $redis->lpush("test","111");
+        $redis->lpush("test","222");
+        $redis->rpush("test","333");
+        $redis->rpush("test","444");
+//        var_dump($redis->lget("test",3));  //结果：string(3) "444"
+//        var_dump($redis->lset("test",1,"333"));  //结果：bool(true)
+        $redis->delete('test');
+        $redis->lpush("test","111");
+        $redis->lpush("test","222");
+        print_r($redis->lgetrange("test",0,-1));  //结果：Array ( [0] => 222 [1] => 111 )  返回在该区域中的指定键列表中开始到结束存储的指定元素，lGetRange(key, start, end)。0第一个元素，1第二个元素… -1最后一个元素，-2的倒数第二…
+        die;
         /*
             //获取微信配置
             $wechat_list = M('wx_user')->select();
@@ -160,6 +190,7 @@ class IndexController extends MobileBaseController {
             
             $store_list[$key]['goods_array'] = D('store')->getStoreGoods($value['store_id'],4);
         }
+//        var_dump($store_list);die;
         $this->assign('store_list',$store_list);
 		$this->assign('empty',"<h1 style='height:35vw; line-height:35vw; text-align:center; font-weight:100; font-size:16px; color:#f00'>未找到更多店铺</h1>");
         $this->display();

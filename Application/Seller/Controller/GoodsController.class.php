@@ -516,15 +516,18 @@ class GoodsController extends BaseController {
         //ob_start('ob_gzhandler'); // 页面压缩输出
         $cat_id3 = I('cat_id3',0); 
         $spec_id = I('spec_id',0);
+
         $type_id = M('goods_category')->where("id = $cat_id3")->getField('type_id'); // 获取这个分类对应的类型
         if(empty($cat_id3) || empty($type_id)) exit('');
         
         $spec_id_arr = M('spec_type')->where("type_id = $type_id")->getField('spec_id',true); // 获取这个类型所拥有的规格
+
         if(empty($spec_id_arr)) exit('');
         
         $spec_id = $spec_id ? $spec_id : $spec_id_arr[0]; //没有传值则使用第一个
-        
-        $specList = M('spec')->where(" id in(".  implode(',', $spec_id_arr).")")->getField('id,name,cat_id1,cat_id2,cat_id3');        
+//        echo $spec_id;die;
+        $specList = M('spec')->where(" id in(".  implode(',', $spec_id_arr).")")->getField('id,name,cat_id1,cat_id2,cat_id3');
+        $specList = M('spec')->where(" cat_id3 =$cat_id3 ")->getField('id,name,cat_id1,cat_id2,cat_id3');
         $specItemList = M('spec_item')->where("store_id = ".STORE_ID." and spec_id = $spec_id")->order('id')->select(); // 获取这个类型所拥有的规格                        
         //I('cat_id1')   && $where = "$where and cat_id1 = ".I('cat_id1') ;                       
         $this->assign('spec_id',$spec_id);

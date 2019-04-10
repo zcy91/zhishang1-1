@@ -116,7 +116,7 @@
                                     <td>发货后多少天自动收货：</td>
                                     <td >                         		
                                         <select class="form-control" name="auto_confirm_date" id="distribut_date">
-                                                <?php $__FOR_START_27832__=1;$__FOR_END_27832__=31;for($i=$__FOR_START_27832__;$i < $__FOR_END_27832__;$i+=1){ ?><option value="<?php echo ($i); ?>" <?php if($config[auto_confirm_date] == $i): ?>selected="selected"<?php endif; ?>><?php echo ($i); ?>天</option><?php } ?>
+                                                <?php $__FOR_START_20739__=1;$__FOR_END_20739__=31;for($i=$__FOR_START_20739__;$i < $__FOR_END_20739__;$i+=1){ ?><option value="<?php echo ($i); ?>" <?php if($config[auto_confirm_date] == $i): ?>selected="selected"<?php endif; ?>><?php echo ($i); ?>天</option><?php } ?>
                                         </select>                                      
                                     </td>
                                 </tr>
@@ -127,7 +127,7 @@
                                     </td>
                                     <td>
                                         <select class="form-control" name="auto_transfer_date" id="auto_transfer_date">
-                                                <?php $__FOR_START_30557__=1;$__FOR_END_30557__=8;for($i=$__FOR_START_30557__;$i < $__FOR_END_30557__;$i+=1){ ?><option value="<?php echo ($i); ?>" <?php if($config[auto_transfer_date] == $i): ?>selected="selected"<?php endif; ?>><?php echo ($i); ?>天</option><?php } ?>
+                                                <?php $__FOR_START_15833__=1;$__FOR_END_15833__=8;for($i=$__FOR_START_15833__;$i < $__FOR_END_15833__;$i+=1){ ?><option value="<?php echo ($i); ?>" <?php if($config[auto_transfer_date] == $i): ?>selected="selected"<?php endif; ?>><?php echo ($i); ?>天</option><?php } ?>
                                         </select>                                      
                                     </td>
                                 </tr>                                

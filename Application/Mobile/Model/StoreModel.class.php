@@ -75,10 +75,16 @@ class StoreModel extends Model{
 		if($key){
             $store_where['s.store_name'] =array('like','%'.$key.'%');
 		}
+
+        $store_where['s.lng'] = array('exp','is not null');
 		$lng_lat=session('lng_lat');
 		$lng_lat=explode(",",$lng_lat);
         $slng =$lng_lat[0];
 	    $slat =$lng_lat[1];
+	    if(empty($slng))
+	        $slng = 120.081613;
+	    if(empty($slat))
+	        $slat = 29.312187;
         $store_list = $model
             ->table($db_prefix .'store s')
             ->field('s.store_id,s.store_phone,s.store_logo,s.store_name,s.store_desccredit,s.store_servicecredit,s.store_address,

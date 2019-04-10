@@ -1,0 +1,137 @@
+[ 2019-04-03T16:39:19+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Goods/goodsInfo/id/526
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+INFO: [ view_begin ] --START--
+INFO: Run Home\Behaviors\testBehavior [ RunTime:0.002000s ]
+INFO: [ view_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: level E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 148 行.
+NOTIC: [8] Undefined index: level E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 148 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant anum - assumed 'anum' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 40 行.
+NOTIC: [8] Undefined variable: cart_total_price E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 40 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant HTTP_HOST - assumed 'HTTP_HOST' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 103 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 103 行.
+NOTIC: [8] Use of undefined constant HTTP_HOST - assumed 'HTTP_HOST' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 104 行.
+NOTIC: [8] Use of undefined constant goods_id - assumed 'goods_id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 104 行.
+NOTIC: [8] Undefined variable: prom_goods E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 131 行.
+NOTIC: [8] Undefined variable: prom_order E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 131 行.
+NOTIC: [8] Use of undefined constant store_id - assumed 'store_id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 286 行.
+NOTIC: [8] Use of undefined constant store_id - assumed 'store_id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 292 行.
+NOTIC: [8] Use of undefined constant store_id - assumed 'store_id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 295 行.
+NOTIC: [8] Use of undefined constant store_id - assumed 'store_id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 304 行.
+NOTIC: [8] Undefined index: flash_sale E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 407 行.
+NOTIC: [8] Undefined variable: signPackage E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 462 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.058003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.058003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-04-03T16:39:19+08:00 ] 127.0.0.1 /index.php?s=/Mobile/Goods/goodsInfo/id/526
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+INFO: [ view_begin ] --START--
+INFO: Run Home\Behaviors\testBehavior [ RunTime:0.001000s ]
+INFO: [ view_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: level E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 148 行.
+NOTIC: [8] Undefined index: level E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 148 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant anum - assumed 'anum' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 40 行.
+NOTIC: [8] Undefined variable: cart_total_price E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 40 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 53 行.
+NOTIC: [8] Use of undefined constant HTTP_HOST - assumed 'HTTP_HOST' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 103 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 103 行.
+NOTIC: [8] Use of undefined constant HTTP_HOST - assumed 'HTTP_HOST' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 104 行.
+NOTIC: [8] Use of undefined constant goods_id - assumed 'goods_id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 104 行.
+NOTIC: [8] Undefined variable: prom_goods E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 131 行.
+NOTIC: [8] Undefined variable: prom_order E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 131 行.
+NOTIC: [8] Use of undefined constant store_id - assumed 'store_id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 286 行.
+NOTIC: [8] Use of undefined constant store_id - assumed 'store_id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 292 行.
+NOTIC: [8] Use of undefined constant store_id - assumed 'store_id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 295 行.
+NOTIC: [8] Use of undefined constant store_id - assumed 'store_id' E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 304 行.
+NOTIC: [8] Undefined index: flash_sale E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 407 行.
+NOTIC: [8] Undefined variable: signPackage E:\PHPTutorial\WWW\tpshop\Application\Runtime\Cache\Mobile\5bd58a10bd20005e3d14c8938586c581.php 第 462 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.057004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.057004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2019-04-03T16:39:20+08:00 ] 127.0.0.1 /index.php?m=Mobile&c=goods&a=ajaxComment&goods_id=526&commentType=1&p=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: pa E:\PHPTutorial\WWW\tpshop\ThinkPHP\Library\Think\Controller.class.php 第 100 行.
+INFO: [ view_begin ] --START--
+INFO: Run Home\Behaviors\testBehavior [ RunTime:0.001000s ]
+INFO: [ view_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.005001s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

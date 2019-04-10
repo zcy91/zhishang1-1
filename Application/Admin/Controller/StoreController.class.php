@@ -223,9 +223,10 @@ class StoreController extends BaseController{
 		     $store['lat']=$lng_lat[1];
 		    }
             $store['store_user_name']=$map['store_person_name'];
+		    $user_id = $map['store']['user_id'];
 			unset($map['store']);
 			$a = M('store')->where(array('store_id'=>$map['store_id']))->save($store);
-			$b = M('store_apply')->where(array('user_id'=>$map['user_id']))->save($map);
+			$b = M('store_apply')->where(array('user_id'=>$user_id))->save($map);
 			if($b || $a){
 				if($store['store_state'] == 0){
 					//关闭店铺，同时下架店铺所有商品
